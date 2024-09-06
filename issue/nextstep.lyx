@@ -1,0 +1,968 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language chinese-simplified
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Plans for substantial next steps for lab template development
+\end_layout
+
+\begin_layout Standard
+Navigated from 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki"
+target "https://github.com/gentzkow/GentzkowLabTemplate/wiki/Roadmap"
+literal "false"
+
+\end_inset
+
+,
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://github.com/gentzkow/GentzkowLabTemplate/pull/14#issuecomment-2285161889"
+literal "false"
+
+\end_inset
+
+ comment.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A.
+
+\series default
+ Revise those readmes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG 
+\end_layout
+
+\begin_layout Plain Layout
+For the Wiki:
+\end_layout
+
+\begin_layout Plain Layout
+(1) I looked back to our lab 
+\begin_inset CommandInset href
+LatexCommand href
+name "old Wiki"
+target "https://github.com/gentzkow/template_archive/wiki"
+literal "false"
+
+\end_inset
+
+,
+ I think we have several parts to add (attached below).
+ Maybe we can add some pages called 
+\begin_inset Quotes eld
+\end_inset
+
+details
+\begin_inset Quotes erd
+\end_inset
+
+ attached to our Wiki,
+ to remain the main part of Wiki concise.
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "Repository Structure"
+target "https://github.com/gentzkow/template_archive/wiki/Repository-Structure"
+literal "false"
+
+\end_inset
+
+]:
+ The part of 
+\begin_inset Quotes eld
+\end_inset
+
+Golden Rules
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "Repository Usage"
+target "https://github.com/gentzkow/template_archive/wiki/Repository-Usage"
+literal "false"
+
+\end_inset
+
+]:
+ No need to pull this.
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "Command Line Usage"
+target "https://github.com/gentzkow/template_archive/wiki/Command-Line-Usage"
+literal "false"
+
+\end_inset
+
+]:
+ I think we can add this into Wiki.
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "External dependencies"
+target "https://github.com/gentzkow/template_archive/wiki/External-Dependencies"
+literal "false"
+
+\end_inset
+
+]:
+ I think there is value to add a seperate page to document details for this.
+\end_layout
+
+\begin_layout Plain Layout
+(2) We need to brainstorm and add FAQ sections.
+\end_layout
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+–
+\end_layout
+
+\begin_layout Plain Layout
+For READMEs,
+ I propose:
+ 
+\end_layout
+
+\begin_layout Plain Layout
+(1) Move [Sections:
+ Overview,
+ Requirements,
+ Setup,
+ Example] from Wiki to the README.md in the root.
+ By doing that people will have less cost when they try to run template out-of-box.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+(2) Combine the work in (E).
+\end_layout
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+–
+\end_layout
+
+\begin_layout Plain Layout
+Let me know whether this plan sounds good to you,
+ and where you think of the ReadMEs can be further revised.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+B.
+
+\series default
+ Work more on how to robustly require Git LFS and also create an easy option for people who want to use the repo without Git LFS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG Matt,
+ maybe can you explain a bit more on how to do this 
+\begin_inset Quotes eld
+\end_inset
+
+robustly
+\begin_inset Quotes erd
+\end_inset
+
+?
+ My sense is
+\end_layout
+
+\begin_layout Plain Layout
+(1) Reliability:
+ Ensuring that Git LFS is always correctly used for managing large files in template (this requested testing across Labmates).
+\end_layout
+
+\begin_layout Plain Layout
+(2) Usability:
+ If users meant to use Git LFS,
+ but haven't correctly set up,
+ we should provide clear instructions or handle the situation automatically to avoid errors.
+\end_layout
+
+\begin_layout Plain Layout
+(3) Fault tolerance:
+ If a user haven't installed Git LFS,
+ the system should handle the situation,
+ possibly by offering a switch to turn off Git LFS,
+ and/or prompting the user or offering an easy installation process.
+\end_layout
+
+\begin_layout Plain Layout
+(4) Prevent Accidental Commit:
+ Implement safeguards to prevent accidental commits of large files that should be tracked by Git LFS.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+C.
+
+\series default
+ Consider whether there's a good way to get rid of the redundancy of having multiple copies of make.sh.
+ One would be to restore setup.sh and have it populate the various directories with copies of a single make.sh script.
+ We could consider adding to this code to set up the LaTex,
+ Stata,
+ etc.
+ examples and prompting the user to input which of these they would like.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG This is very clear!
+ I would vote for open a seperate issue for this.
+ Let me know if any objections.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+D.
+
+\series default
+ Revisit dependency handling
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I think this contains three parts.
+\end_layout
+
+\begin_layout Plain Layout
+(1) External dependencies.
+ I think it had been well implemented per 
+\begin_inset CommandInset href
+LatexCommand href
+name "`local_env.sh`"
+target "https://github.com/gentzkow/GentzkowLabTemplate/blob/main/local_env.sh"
+literal "false"
+
+\end_inset
+
+.
+ For documentation,
+ I think there is space to improve in ReadME documentation,
+ see (A) for details.
+\end_layout
+
+\begin_layout Plain Layout
+(2) Internal dependencies.
+ I think we should revisit this.
+ I am in favor of pulling things together in a input.txt like we did in the old one.
+ The documentation for that is missing and we need to add those into ReadMEs.
+\end_layout
+
+\begin_layout Plain Layout
+(3) Package dependencies.
+ I think we need to add something similar to conda_env.yaml/requirement.txt in our projects.
+ We can provide the instruction to install the dependencies for both using conda and not using conda.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+E.
+
+\series default
+ Add examples scripts and run_XXX commands for Lyx and Matlab 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ This can be combined as a part of (A).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+F.
+
+\series default
+ Improve error handling -- make.sh should report errors in Python / R / Stata / Latex scripts
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I might not completely followed up here.
+ I think this had been pretty much done as the log file already print what is happening when running the scripts.
+ See example for my testing branch 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://github.com/gentzkow/GentzkowLabTemplate/blob/395d44796efbdd285c12bfdd88575ddf235de843/2_analysis/output/make.log"
+literal "false"
+
+\end_inset
+
+.
+ I've tested and confirmed that it will print error in `make.log` when there's bug in the code.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+G.
+
+\series default
+ Improve logging -- make.log should nicely report the start and end of make logging,
+ the start and end of each script,
+ and as much verbose feedback on what's going on within each script as possible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG This is clear and I would vote for doing this in an seperate issue.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+For the part of 
+\begin_inset Quotes eld
+\end_inset
+
+what's going on within each script
+\begin_inset Quotes erd
+\end_inset
+
+,
+ I suggest to track the Directed Acyclic Graph (DAG) of the source/target files.
+ Scons has been doing a great job in this,
+ by specifying the dependencies,
+ and the log file also prints the dependencies.
+ I think ideally our template should also achieve this.
+ Moreover,
+ I think we can also design a way to print something in the log,
+ that tracks the stray files that is no longer a part in the pipeline in the repo and delete them.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+H.
+
+\series default
+ Creating /external/ with links.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I believe this is related but a bit conflicted with (D).
+ I think in our old approach,
+ we use paths to directly point to external files.
+ I think in our 
+\begin_inset CommandInset href
+LatexCommand href
+name "`local_env.sh`"
+target "https://github.com/gentzkow/GentzkowLabTemplate/blob/main/local_env.sh"
+literal "false"
+
+\end_inset
+
+,
+ we are also doing that to create paths.
+ Shall we shift to create links?
+ Either works for me.
+ Newsworthy use symlink for external files,
+ while BLP,
+ APD,
+ etc...
+ all use symlinks.
+ I think it's a close call and happy to defer to you.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+I.
+ 
+\series default
+Use .yaml for local_env?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I'd vote for using local_env as it is because my understanding is .yaml requires python or other language to parse.
+ But our shell template aims to remove the layer of python.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+J.
+
+\series default
+ Defaults for executables
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+K.
+ 
+\series default
+Make local_env totally optional?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I agree!
+ I don't think running the template out of box need local_env.
+ I would vote for opening a seperate issue to (1) Modify the code to make it optional.
+ (2) Modify the Wiki/ReadMe to reflect that.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+L.
+
+\series default
+ Write nice header comments for shell commands
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I agree!
+ I would vote for open a seperate issue for this.
+ Let me know if any objections.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+M.
+
+\series default
+ check_setup command
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I can see several place to improve our check_setup command.
+\end_layout
+
+\begin_layout Plain Layout
+(1) Executable Check.
+\end_layout
+
+\begin_layout Plain Layout
+(2) Software Check.
+\end_layout
+
+\begin_layout Plain Layout
+(3) Dependencies Check.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+(4) External Paths Check.
+\end_layout
+
+\begin_layout Plain Layout
+My sense is,
+ we can add switches to let user to turn on/off that part (1) - (3) of check;
+ defalut is off.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+N.
+
+\series default
+ What about output_local / external output?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I think this is related to 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://github.com/gentzkow/template_archive/wiki/External-Dependencies#external-outputs"
+literal "false"
+
+\end_inset
+
+ page.
+ We can navigate what we have to the new template.
+ This issue can be combined with (A).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+O.
+
+\series default
+ How to separate tables/figures from main scripts
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG Matt,
+ maybe could you elaborate this issue a bit more?
+ My sense is,
+ what we currently doing for most projects (Ads-experimental/Deactivation/Newsworthy/BLP) are seperate the analysis scripts and table scripts.
+ You can see an example 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://github.com/project-alethea/ads-experimental/tree/main/analysis/heterogeneous/code"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+I am in favor of this approach.
+ If you also agree with this,
+ then I think this issue would be,
+ adding some words into ReadME/Wiki.
+ I would vote for open a seperate issue for this.
+\end_layout
+
+\begin_layout Plain Layout
+If this suggest to do some changes with respect to repo structure,
+ say we need to create a sperate module,
+ an `/exhibit/` module aside of `/data/` and `/analysis`.
+ I am not a super fan of that mainly because if we updated some analysis scripts,
+ we want to not only produce the intermediate outputs,
+ but also want to see the regression tables/figures,
+ so scripts being kept within a folder under a module is better than having one analysis script and one exhibit script under two different modules.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+P.
+
+\series default
+ License
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG For this,
+ maybe I open a new issue for you?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Q.
+
+\series default
+ Add to lab manual recommended tools -- VS Code?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ Agree.
+ I think VS Code is the best solution for IDE.
+ I will add a paragrah in the lab manual.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+R.
+
+\series default
+ Path handling for repo graph;
+ scripts report their dependencies?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG My sense is,
+ this is similar to my comment in (G).
+ I would vote for combine (R) and (G) together into one issue.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+S.
+
+\series default
+ Update so individual make.sh scripts can run out of the box without any setup step;
+ need to handle case where local_env.sh doesn't exist;
+ use default version
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I think the first part is already done.
+ We can remove them from roadmap.
+ The second part can be conbined with (K).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+T.
+
+\series default
+ Revisit filling tables in Excel (see 
+\begin_inset CommandInset href
+LatexCommand href
+name "#277"
+target "https://github.com/project-alethea/deactivation/issues/277"
+literal "false"
+
+\end_inset
+
+ in deactivation)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ This is also related the discussion in our old template 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://github.com/gentzkow/template_archive/issues/85"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+@MG I think we can make this as an 
+\begin_inset Quotes eld
+\end_inset
+
+extension
+\begin_inset Quotes erd
+\end_inset
+
+ of our examples.
+ By default,
+ users don't fill tables using Excel in our example because this is somewhat complicated and easy to crash;
+ but for people who would like to use Excel,
+ we provide instruction in a seperate ReadME to let them play with Excel.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+U.
+
+\series default
+ Create an automated script to check that all examples run correctly without errors
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I agree!
+ I would vote for open a seperate issue for this.
+ Let me know if any objections.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
