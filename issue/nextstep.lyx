@@ -334,6 +334,32 @@ robustly
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Just adding a comment here.
+ As I discussed in 
+\begin_inset CommandInset href
+LatexCommand href
+name "#15 (comment)"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/15#issuecomment-2344365258"
+literal "false"
+
+\end_inset
+
+,
+ using the template with the "Use this template" feature leads to errors because template repositories cannot include files stores using Git LFS.
+ So we should also consider storing the example files in inputs_for_examples with regular Git 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 C.
@@ -356,6 +382,24 @@ SY:
  @MG This is very clear!
  I would vote for open a seperate issue for this.
  Let me know if any objections.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Relatedly,
+ could it be a good idea to have make.sh always copy the files in the output folder of the previous directory to the input folder of the new one?
+ Since the idea is that the repo is always run in the numbered order,
+ it would reduce the amount of work for the users,
+ thinking of people not used to bash (removing the need to worry about the "cp XX" lines in each of the make.sh directories).
 \end_layout
 
 \end_inset
@@ -417,6 +461,31 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Agree with @SY for (1) and (3).
+ For (2),
+ I'll circle back to my suggestion in (C) that perhaps file dependencies should be automatically handled through the numbering structure of the directories - and we could add more error handling and documentation in the ReadME files.
+ I realize this is a big change and may not be optimal especially since e.g 3_slides and 4_paper could both require the output from 2_data as inputs,
+ but I think dealing with whole directories instead of specific files might still be worth it.
+ Maybe bringing back input.txt but users choose folders instead of files?
+ 
+\end_layout
+
+\begin_layout Plain Layout
+For (1),
+ I'll just add that maybe check_setup should report errors if make.sh calls for software that is not available via the command line.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 E.
@@ -464,6 +533,22 @@ literal "false"
 
 .
  I've tested and confirmed that it will print error in `make.log` when there's bug in the code.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Agree with @SY.
+ Error handling in log files seems to be working fine,
+ including missing packages or even when the program is not available via the command line.
 \end_layout
 
 \end_inset
@@ -562,6 +647,41 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ About this,
+ I read through some of the discussion about Overleaf usage in 
+\begin_inset CommandInset href
+LatexCommand href
+name "#84 (template_archive)"
+target "https://github.com/gentzkow/template_archive/issues/84"
+literal "false"
+
+\end_inset
+
+ and the archived wiki about Overleaf-Dropbox sync in 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki"
+target "https://github.com/ShiqiYang2022/template/wiki/Overleaf%E2%80%90GitHub-Synchronization"
+literal "false"
+
+\end_inset
+
+.
+ Especially since many people are used to Overleaf,
+ I wonder whether this has been thought about for the new template as well.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 I.
@@ -613,6 +733,24 @@ SY:
  I don't think running the template out of box need local_env.
  I would vote for opening a seperate issue to (1) Modify the code to make it optional.
  (2) Modify the Wiki/ReadMe to reflect that.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ @MG I am not sure what you mean by making it totally optional.
+ Currently,
+ users that do not want to edit local_env will use the default version created when they run check_setup,
+ so in this sense it is already fully optional,
+ no?
 \end_layout
 
 \end_inset
@@ -684,6 +822,21 @@ SY:
 My sense is,
  we can add switches to let user to turn on/off that part (1) - (3) of check;
  defalut is off.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Agree with @SY above,
+ especially regarding (2) I suggested for point (1) in (D)
 \end_layout
 
 \end_inset
@@ -875,6 +1028,31 @@ SY:
  @MG I think the first part is already done.
  We can remove them from roadmap.
  The second part can be conbined with (K).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ I think the case when local_env.sh doesn`t exist is handled by the current check_setup.sh code (see 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://github.com/gentzkow/GentzkowLabTemplate/blob/6c534efcaa2d5bd9a65e06c7822a670ff1a34da1/lib/shell/check_setup.sh#L13"
+literal "false"
+
+\end_inset
+
+).
+ Also agree this is related to (K),
+ see my comment there.
 \end_layout
 
 \end_inset
