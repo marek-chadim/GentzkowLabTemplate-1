@@ -360,6 +360,55 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Navigated from MG's 
+\begin_inset CommandInset href
+LatexCommand href
+name "comment"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/15#issuecomment-2347790785"
+literal "false"
+
+\end_inset
+
+:
+ 
+\end_layout
+
+\begin_layout Plain Layout
+What we need to achieve,
+ ideally,
+ is:
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ The template can run out of the box without Git LFS installed and it functions correctly as a template on Github.
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ The template is preconfigured so that someone who *does* want to use LFS can do so easily.
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ We have good ways of enforcing that all of our lab projects *must* be using LFS.
+\end_layout
+
+\begin_layout Plain Layout
+One possibility for (2) would be that we can make LFS an extension in `/examples/` -- the directory would just need to have a readme explaining the steps and our default `.gitattributes`.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 C.
