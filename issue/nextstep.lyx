@@ -364,7 +364,8 @@ literal "false"
 status open
 
 \begin_layout Plain Layout
-Navigated from MG's 
+SY:
+ Navigated from MG's 
 \begin_inset CommandInset href
 LatexCommand href
 name "comment"
@@ -504,6 +505,16 @@ literal "false"
  We can provide the instruction to install the dependencies for both using conda and not using conda.
 \end_layout
 
+\begin_layout Plain Layout
+MG thinks mainly for (3).
+ Now we need to install ourselves,
+ and also the version might change over time.
+\end_layout
+
+\begin_layout Plain Layout
+Investigate renv dependencies or something similar for python.
+\end_layout
+
 \end_inset
 
 
@@ -547,6 +558,11 @@ status open
 \begin_layout Plain Layout
 SY:
  This can be combined as a part of (A).
+\end_layout
+
+\begin_layout Plain Layout
+MG:
+ This is simple.
 \end_layout
 
 \end_inset
@@ -644,11 +660,34 @@ what's going on within each script
  Moreover,
  I think we can also design a way to print something in the log,
  that tracks the stray files that is no longer a part in the pipeline in the repo and delete them.
+ MG:
+ Put in the future development.
+\end_layout
+
+\begin_layout Plain Layout
+MG:
+ Error tracking happen in the run command.
+ In the terminal,
+ but not only in the log.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+MG:
+ Detect and report all errors.
+ Ideally we would notice and tell user for PDF not created.
+ 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+[Delete]
 \end_layout
 
 \begin_layout Standard
@@ -749,6 +788,23 @@ SY:
  But our shell template aims to remove the layer of python.
 \end_layout
 
+\begin_layout Plain Layout
+MG:
+ We would like to let ppl run the file from terminal.
+ Set of topic that works as a unit test in this template,
+ list the desiredata so that we know what we want to achieve.
+ For example,
+ ppl know we they need to do conditionaled on they know nothing.
+\end_layout
+
+\begin_layout Plain Layout
+Decision:
+ Let's do yaml.
+ External path only passed via yaml.
+ Investigate how we do it robustly.
+ We need shell scripts to read that.
+\end_layout
+
 \end_inset
 
 
@@ -766,7 +822,7 @@ J.
 \begin_layout Standard
 
 \series bold
-K.
+[We have this property] K.
  
 \series default
 Make local_env totally optional?
@@ -873,6 +929,12 @@ My sense is,
  defalut is off.
 \end_layout
 
+\begin_layout Plain Layout
+MG:
+ Bundle and pack that for now,
+ for next meeting.
+\end_layout
+
 \end_inset
 
 
@@ -886,6 +948,13 @@ status open
 LML:
  Agree with @SY above,
  especially regarding (2) I suggested for point (1) in (D)
+\end_layout
+
+\begin_layout Plain Layout
+Decision:
+ We can make check_setup a part of make.sh;
+ to check what files used in its corresponding module.
+ Make the check_setup script simple as we can.
 \end_layout
 
 \end_inset
