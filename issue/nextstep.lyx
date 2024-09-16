@@ -113,6 +113,174 @@ literal "false"
  comment.
 \end_layout
 
+\begin_layout Section
+Resolved points with plans
+\end_layout
+
+\begin_layout Standard
+I am listing the resolved points below.
+ Labmates pick the items,
+ open the issue and assign themselves.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+D.
+
+\series default
+ Revisit dependency handling.
+ We mainly talked about package dependencies.
+ 
+\end_layout
+
+\begin_layout Standard
+Decision:
+ 
+\end_layout
+
+\begin_layout Standard
+(1) For new users who want to use the template out of box,
+ they don't need to know anything about that.
+ Provide clear instruction in ReadME on how to install related packages.
+\end_layout
+
+\begin_layout Standard
+(2) Investigate whether we still need to use conda or not.
+ The alternative for this is using `renv` for managing R packages and `venv` (or something similar) for Python.
+ Play with the alternatives yourself and evaluate its pros and cons.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+E.
+
+\series default
+ Add examples scripts + Instructions and run_XXX commands for Lyx and Matlab.
+ 
+\end_layout
+
+\begin_layout Standard
+Decision:
+ This is straightforward.
+ We should go ahead and implement.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+[Combine F and G into one issue]
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+F.
+
+\series default
+ Improve error handling -- make.sh should report errors in Python / R / Stata / Latex scripts.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+G.
+
+\series default
+ Improve logging -- make.log should nicely report the start and end of make logging,
+ the start and end of each script,
+ and as much verbose feedback on what's going on within each script as possible.
+\end_layout
+
+\begin_layout Standard
+Decision:
+\end_layout
+
+\begin_layout Standard
+(1) Error tracking should happen in the run command.
+ It should be reported both in the terminal and in the log file.
+\end_layout
+
+\begin_layout Standard
+(2) Detect and report all kinds errors,
+ not only errors when running a program,
+ but also the errors that stucks the program and even when program is not available via the command line.
+\end_layout
+
+\begin_layout Standard
+(3) If the desired output have not been generated but the program still runs well,
+ report an error.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+H.
+
+\series default
+ Creating /external/ with links.
+\end_layout
+
+\begin_layout Standard
+Decision:
+ Delete this from to-do list.
+ We've decided to use paths.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+I.
+ 
+\series default
+Use .yaml for local_env?
+\end_layout
+
+\begin_layout Standard
+Decision:
+\end_layout
+
+\begin_layout Standard
+(1) Let's do `.yaml`.
+\end_layout
+
+\begin_layout Standard
+(2) External path only passed via `.yaml`.
+\end_layout
+
+\begin_layout Standard
+(3) Investigate how to let shell scripts to read `.yaml` file,
+ so people can run it from terminal.
+\end_layout
+
+\begin_layout Standard
+(4) People need to know how to deal with `.yaml` file conditioned on they know nothing.
+\end_layout
+
+\begin_layout Standard
+(5) Work on a set of unit test so that we have confidence about what we have achieved by using `.yaml` file.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+L.
+
+\series default
+ Write nice header comments for shell commands.
+\end_layout
+
+\begin_layout Standard
+Decision:
+ This is straightforward.
+ We should go ahead and implement.
+\end_layout
+
+\begin_layout Section
+Points to resolve
+\end_layout
+
 \begin_layout Standard
 
 \series bold
@@ -387,6 +555,8 @@ What we need to achieve,
 \begin_layout Plain Layout
 1.
  The template can run out of the box without Git LFS installed and it functions correctly as a template on Github.
+ This means we need to revise the way we currently commit data and figure files into non Git LFS.
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -460,359 +630,6 @@ LML:
 \begin_layout Standard
 
 \series bold
-D.
-
-\series default
- Revisit dependency handling
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG I think this contains three parts.
-\end_layout
-
-\begin_layout Plain Layout
-(1) External dependencies.
- I think it had been well implemented per 
-\begin_inset CommandInset href
-LatexCommand href
-name "`local_env.sh`"
-target "https://github.com/gentzkow/GentzkowLabTemplate/blob/main/local_env.sh"
-literal "false"
-
-\end_inset
-
-.
- For documentation,
- I think there is space to improve in ReadME documentation,
- see (A) for details.
-\end_layout
-
-\begin_layout Plain Layout
-(2) Internal dependencies.
- I think we should revisit this.
- I am in favor of pulling things together in a input.txt like we did in the old one.
- The documentation for that is missing and we need to add those into ReadMEs.
-\end_layout
-
-\begin_layout Plain Layout
-(3) Package dependencies.
- I think we need to add something similar to conda_env.yaml/requirement.txt in our projects.
- We can provide the instruction to install the dependencies for both using conda and not using conda.
-\end_layout
-
-\begin_layout Plain Layout
-MG thinks mainly for (3).
- Now we need to install ourselves,
- and also the version might change over time.
-\end_layout
-
-\begin_layout Plain Layout
-Investigate renv dependencies or something similar for python.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LML:
- Agree with @SY for (1) and (3).
- For (2),
- I'll circle back to my suggestion in (C) that perhaps file dependencies should be automatically handled through the numbering structure of the directories - and we could add more error handling and documentation in the ReadME files.
- I realize this is a big change and may not be optimal especially since e.g 3_slides and 4_paper could both require the output from 2_data as inputs,
- but I think dealing with whole directories instead of specific files might still be worth it.
- Maybe bringing back input.txt but users choose folders instead of files?
- 
-\end_layout
-
-\begin_layout Plain Layout
-For (1),
- I'll just add that maybe check_setup should report errors if make.sh calls for software that is not available via the command line.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-E.
-
-\series default
- Add examples scripts and run_XXX commands for Lyx and Matlab 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- This can be combined as a part of (A).
-\end_layout
-
-\begin_layout Plain Layout
-MG:
- This is simple.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-F.
-
-\series default
- Improve error handling -- make.sh should report errors in Python / R / Stata / Latex scripts
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG I might not completely followed up here.
- I think this had been pretty much done as the log file already print what is happening when running the scripts.
- See example for my testing branch 
-\begin_inset CommandInset href
-LatexCommand href
-name "here"
-target "https://github.com/gentzkow/GentzkowLabTemplate/blob/395d44796efbdd285c12bfdd88575ddf235de843/2_analysis/output/make.log"
-literal "false"
-
-\end_inset
-
-.
- I've tested and confirmed that it will print error in `make.log` when there's bug in the code.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LML:
- Agree with @SY.
- Error handling in log files seems to be working fine,
- including missing packages or even when the program is not available via the command line.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-G.
-
-\series default
- Improve logging -- make.log should nicely report the start and end of make logging,
- the start and end of each script,
- and as much verbose feedback on what's going on within each script as possible.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG This is clear and I would vote for doing this in an seperate issue.
- 
-\end_layout
-
-\begin_layout Plain Layout
-For the part of 
-\begin_inset Quotes eld
-\end_inset
-
-what's going on within each script
-\begin_inset Quotes erd
-\end_inset
-
-,
- I suggest to track the Directed Acyclic Graph (DAG) of the source/target files.
- Scons has been doing a great job in this,
- by specifying the dependencies,
- and the log file also prints the dependencies.
- I think ideally our template should also achieve this.
- Moreover,
- I think we can also design a way to print something in the log,
- that tracks the stray files that is no longer a part in the pipeline in the repo and delete them.
- MG:
- Put in the future development.
-\end_layout
-
-\begin_layout Plain Layout
-MG:
- Error tracking happen in the run command.
- In the terminal,
- but not only in the log.
- 
-\end_layout
-
-\begin_layout Plain Layout
-MG:
- Detect and report all errors.
- Ideally we would notice and tell user for PDF not created.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-[Delete]
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-H.
-
-\series default
- Creating /external/ with links.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG I believe this is related but a bit conflicted with (D).
- I think in our old approach,
- we use paths to directly point to external files.
- I think in our 
-\begin_inset CommandInset href
-LatexCommand href
-name "`local_env.sh`"
-target "https://github.com/gentzkow/GentzkowLabTemplate/blob/main/local_env.sh"
-literal "false"
-
-\end_inset
-
-,
- we are also doing that to create paths.
- Shall we shift to create links?
- Either works for me.
- Newsworthy use symlink for external files,
- while BLP,
- APD,
- etc...
- all use symlinks.
- I think it's a close call and happy to defer to you.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LML:
- About this,
- I read through some of the discussion about Overleaf usage in 
-\begin_inset CommandInset href
-LatexCommand href
-name "#84 (template_archive)"
-target "https://github.com/gentzkow/template_archive/issues/84"
-literal "false"
-
-\end_inset
-
- and the archived wiki about Overleaf-Dropbox sync in 
-\begin_inset CommandInset href
-LatexCommand href
-name "Wiki"
-target "https://github.com/ShiqiYang2022/template/wiki/Overleaf%E2%80%90GitHub-Synchronization"
-literal "false"
-
-\end_inset
-
-.
- Especially since many people are used to Overleaf,
- I wonder whether this has been thought about for the new template as well.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-I.
- 
-\series default
-Use .yaml for local_env?
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG I'd vote for using local_env as it is because my understanding is .yaml requires python or other language to parse.
- But our shell template aims to remove the layer of python.
-\end_layout
-
-\begin_layout Plain Layout
-MG:
- We would like to let ppl run the file from terminal.
- Set of topic that works as a unit test in this template,
- list the desiredata so that we know what we want to achieve.
- For example,
- ppl know we they need to do conditionaled on they know nothing.
-\end_layout
-
-\begin_layout Plain Layout
-Decision:
- Let's do yaml.
- External path only passed via yaml.
- Investigate how we do it robustly.
- We need shell scripts to read that.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
 J.
 
 \series default
@@ -820,67 +637,22 @@ J.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-[We have this property] K.
- 
-\series default
-Make local_env totally optional?
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 SY:
- @MG I agree!
- I don't think running the template out of box need local_env.
- I would vote for opening a seperate issue to (1) Modify the code to make it optional.
- (2) Modify the Wiki/ReadMe to reflect that.
-\end_layout
+ I might have missed this,
+ but I think we are satisfied with our current executable defaults in 
+\begin_inset CommandInset href
+LatexCommand href
+name "`locak_env.sh`"
+target "https://github.com/gentzkow/GentzkowLabTemplate/blob/e7405b210b12119df928ef265fa9bcec129523a9/local_env.sh#L11-L13"
+literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LML:
- @MG I am not sure what you mean by making it totally optional.
- Currently,
- users that do not want to edit local_env will use the default version created when they run check_setup,
- so in this sense it is already fully optional,
- no?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-L.
-
-\series default
- Write nice header comments for shell commands
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG I agree!
- I would vote for open a seperate issue for this.
- Let me know if any objections.
+?
 \end_layout
 
 \end_inset
@@ -929,10 +701,77 @@ My sense is,
  defalut is off.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Agree with @SY above,
+ especially regarding (2),
+ this had been well implemented per 
+\begin_inset CommandInset href
+LatexCommand href
+name "`local_env.sh`"
+target "https://github.com/gentzkow/GentzkowLabTemplate/blob/main/local_env.sh"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Decision:
+ We can make check_setup a part of make.sh;
+ to check what files used in its corresponding module.
+ Make the check_setup script simple as we can.
+\end_layout
+
 \begin_layout Plain Layout
 MG:
- Bundle and pack that for now,
- for next meeting.
+ Bundle the rest,
+ and pack those for next meeting.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+[We have this property] K.
+ 
+\series default
+Make local_env totally optional?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG I agree!
+ I don't think running the template out of box need local_env.
+ I would vote for opening a seperate issue to (1) Modify the code to make it optional.
+ (2) Modify the Wiki/ReadMe to reflect that.
 \end_layout
 
 \end_inset
@@ -946,15 +785,11 @@ status open
 
 \begin_layout Plain Layout
 LML:
- Agree with @SY above,
- especially regarding (2) I suggested for point (1) in (D)
-\end_layout
-
-\begin_layout Plain Layout
-Decision:
- We can make check_setup a part of make.sh;
- to check what files used in its corresponding module.
- Make the check_setup script simple as we can.
+ @MG I am not sure what you mean by making it totally optional.
+ Currently,
+ users that do not want to edit local_env will use the default version created when they run check_setup,
+ so in this sense it is already fully optional,
+ no?
 \end_layout
 
 \end_inset
@@ -1117,8 +952,7 @@ status open
 \begin_layout Plain Layout
 SY:
  @MG My sense is,
- this is similar to my comment in (G).
- I would vote for combine (R) and (G) together into one issue.
+ this is similar to my comment about DAG in scons.
 \end_layout
 
 \end_inset
