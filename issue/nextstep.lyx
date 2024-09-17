@@ -126,6 +126,47 @@ I am listing the resolved points below.
 \begin_layout Standard
 
 \series bold
+B.
+
+\series default
+ Work more on how to robustly require Git LFS and also create an easy option for people who want to use the repo without Git LFS.
+\end_layout
+
+\begin_layout Standard
+Decision:
+\end_layout
+
+\begin_layout Standard
+1.
+ The template can run out of the box without Git LFS installed and it functions correctly as a template on Github.
+ This means we need to revise the way we currently commit data and figure files into non Git LFS.
+ 
+\end_layout
+
+\begin_layout Standard
+2.
+ The template is preconfigured so that someone who *does* want to use LFS can do so easily.
+\end_layout
+
+\begin_layout Standard
+3.
+ We have good ways of enforcing that all of our lab projects *must* be using LFS.
+\end_layout
+
+\begin_layout Standard
+One possibility for (2) would be that we can make LFS an extension in `/examples/` -- the directory would just need to have a readme explaining the steps and our default `.gitattributes`.
+ 
+\end_layout
+
+\begin_layout Standard
+4.
+ For our lab,
+ investigate how to prevent anything not consistent with Git LFS pushed to our lab repo (maybe use some hooks).
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 D.
 
 \series default
@@ -146,7 +187,12 @@ Decision:
 \end_layout
 
 \begin_layout Standard
-(2) Investigate whether we still need to use conda or not.
+(2) For people who don't want to use conda,
+ they need know what packages need to be installed and then install them (but definitely we cannot garantee after that we don't have conflicts).
+\end_layout
+
+\begin_layout Standard
+(3) Investigate whether we still need to use conda or not.
  The alternative for this is using `renv` for managing R packages and `venv` (or something similar) for Python.
  Play with the alternatives yourself and evaluate its pros and cons.
 \end_layout
@@ -227,21 +273,6 @@ Decision:
 \begin_layout Standard
 
 \series bold
-H.
-
-\series default
- Creating /external/ with links.
-\end_layout
-
-\begin_layout Standard
-Decision:
- Delete this from to-do list.
- We've decided to use paths.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
 I.
  
 \series default
@@ -253,24 +284,28 @@ Decision:
 \end_layout
 
 \begin_layout Standard
-(1) Let's do `.yaml`.
+(1) Let's not do `.yaml`,
+ using Shell script.
 \end_layout
 
 \begin_layout Standard
-(2) External path only passed via `.yaml`.
+(2) External path only passed via `local_env.sh`.
 \end_layout
 
 \begin_layout Standard
-(3) Investigate how to let shell scripts to read `.yaml` file,
- so people can run it from terminal.
+(3) Investigate how to let shell scripts to read `local_env.sh` file to recognize the path in a 
+\series bold
+robust
+\series default
+ way.
 \end_layout
 
 \begin_layout Standard
-(4) People need to know how to deal with `.yaml` file conditioned on they know nothing.
+(4) People need to know how to deal with `local_env.sh` file conditioned on they know nothing.
 \end_layout
 
 \begin_layout Standard
-(5) Work on a set of unit test so that we have confidence about what we have achieved by using `.yaml` file.
+(5) Work on a set of unit test so that we have confidence about what we have achieved by using `local_env.sh` file.
 \end_layout
 
 \begin_layout Standard
@@ -288,354 +323,25 @@ Decision:
  We should go ahead and implement.
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+V.
+
+\series default
+ About input.txt or /input/ simlinks in the make.sh.
+\end_layout
+
+\begin_layout Standard
+Decision:
+ The general principle is still still use input.txt or /input/ symlinks.
+ We can investigate whether there is a way to scan over all the scripts and then recognize all the input paths,
+ so that next time when there's any input file change its path/location,
+ we can put some reminder or update the symlinks accordingly.
+\end_layout
+
 \begin_layout Section
-Points to resolve
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-A.
-
-\series default
- Revise those readmes.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG 
-\end_layout
-
-\begin_layout Plain Layout
-For the Wiki:
-\end_layout
-
-\begin_layout Plain Layout
-(1) I looked back to our lab 
-\begin_inset CommandInset href
-LatexCommand href
-name "old Wiki"
-target "https://github.com/gentzkow/template_archive/wiki"
-literal "false"
-
-\end_inset
-
-,
- I think we have several parts to add (attached below).
- Maybe we can add some pages called 
-\begin_inset Quotes eld
-\end_inset
-
-details
-\begin_inset Quotes erd
-\end_inset
-
- attached to our Wiki,
- to remain the main part of Wiki concise.
-\end_layout
-
-\begin_layout Itemize
-[
-\begin_inset CommandInset href
-LatexCommand href
-name "Repository Structure"
-target "https://github.com/gentzkow/template_archive/wiki/Repository-Structure"
-literal "false"
-
-\end_inset
-
-]:
- The part of 
-\begin_inset Quotes eld
-\end_inset
-
-Golden Rules
-\begin_inset Quotes erd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-[
-\begin_inset CommandInset href
-LatexCommand href
-name "Repository Usage"
-target "https://github.com/gentzkow/template_archive/wiki/Repository-Usage"
-literal "false"
-
-\end_inset
-
-]:
- No need to pull this.
-\end_layout
-
-\begin_layout Itemize
-[
-\begin_inset CommandInset href
-LatexCommand href
-name "Command Line Usage"
-target "https://github.com/gentzkow/template_archive/wiki/Command-Line-Usage"
-literal "false"
-
-\end_inset
-
-]:
- I think we can add this into Wiki.
-\end_layout
-
-\begin_layout Itemize
-[
-\begin_inset CommandInset href
-LatexCommand href
-name "External dependencies"
-target "https://github.com/gentzkow/template_archive/wiki/External-Dependencies"
-literal "false"
-
-\end_inset
-
-]:
- I think there is value to add a seperate page to document details for this.
-\end_layout
-
-\begin_layout Plain Layout
-(2) We need to brainstorm and add FAQ sections.
-\end_layout
-
-\begin_layout Plain Layout
-—
-—
-—
-—
-—
-–
-\end_layout
-
-\begin_layout Plain Layout
-For READMEs,
- I propose:
- 
-\end_layout
-
-\begin_layout Plain Layout
-(1) Move [Sections:
- Overview,
- Requirements,
- Setup,
- Example] from Wiki to the README.md in the root.
- By doing that people will have less cost when they try to run template out-of-box.
- 
-\end_layout
-
-\begin_layout Plain Layout
-(2) Combine the work in (E).
-\end_layout
-
-\begin_layout Plain Layout
-—
-—
-—
-—
-—
-–
-\end_layout
-
-\begin_layout Plain Layout
-Let me know whether this plan sounds good to you,
- and where you think of the ReadMEs can be further revised.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-B.
-
-\series default
- Work more on how to robustly require Git LFS and also create an easy option for people who want to use the repo without Git LFS
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG Matt,
- maybe can you explain a bit more on how to do this 
-\begin_inset Quotes eld
-\end_inset
-
-robustly
-\begin_inset Quotes erd
-\end_inset
-
-?
- My sense is
-\end_layout
-
-\begin_layout Plain Layout
-(1) Reliability:
- Ensuring that Git LFS is always correctly used for managing large files in template (this requested testing across Labmates).
-\end_layout
-
-\begin_layout Plain Layout
-(2) Usability:
- If users meant to use Git LFS,
- but haven't correctly set up,
- we should provide clear instructions or handle the situation automatically to avoid errors.
-\end_layout
-
-\begin_layout Plain Layout
-(3) Fault tolerance:
- If a user haven't installed Git LFS,
- the system should handle the situation,
- possibly by offering a switch to turn off Git LFS,
- and/or prompting the user or offering an easy installation process.
-\end_layout
-
-\begin_layout Plain Layout
-(4) Prevent Accidental Commit:
- Implement safeguards to prevent accidental commits of large files that should be tracked by Git LFS.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LML:
- Just adding a comment here.
- As I discussed in 
-\begin_inset CommandInset href
-LatexCommand href
-name "#15 (comment)"
-target "https://github.com/gentzkow/GentzkowLabTemplate/issues/15#issuecomment-2344365258"
-literal "false"
-
-\end_inset
-
-,
- using the template with the "Use this template" feature leads to errors because template repositories cannot include files stores using Git LFS.
- So we should also consider storing the example files in inputs_for_examples with regular Git 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- Navigated from MG's 
-\begin_inset CommandInset href
-LatexCommand href
-name "comment"
-target "https://github.com/gentzkow/GentzkowLabTemplate/issues/15#issuecomment-2347790785"
-literal "false"
-
-\end_inset
-
-:
- 
-\end_layout
-
-\begin_layout Plain Layout
-What we need to achieve,
- ideally,
- is:
-\end_layout
-
-\begin_layout Plain Layout
-1.
- The template can run out of the box without Git LFS installed and it functions correctly as a template on Github.
- This means we need to revise the way we currently commit data and figure files into non Git LFS.
- 
-\end_layout
-
-\begin_layout Plain Layout
-2.
- The template is preconfigured so that someone who *does* want to use LFS can do so easily.
-\end_layout
-
-\begin_layout Plain Layout
-3.
- We have good ways of enforcing that all of our lab projects *must* be using LFS.
-\end_layout
-
-\begin_layout Plain Layout
-One possibility for (2) would be that we can make LFS an extension in `/examples/` -- the directory would just need to have a readme explaining the steps and our default `.gitattributes`.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-C.
-
-\series default
- Consider whether there's a good way to get rid of the redundancy of having multiple copies of make.sh.
- One would be to restore setup.sh and have it populate the various directories with copies of a single make.sh script.
- We could consider adding to this code to set up the LaTex,
- Stata,
- etc.
- examples and prompting the user to input which of these they would like.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SY:
- @MG This is very clear!
- I would vote for open a seperate issue for this.
- Let me know if any objections.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LML:
- Relatedly,
- could it be a good idea to have make.sh always copy the files in the output folder of the previous directory to the input folder of the new one?
- Since the idea is that the repo is always run in the numbered order,
- it would reduce the amount of work for the users,
- thinking of people not used to bash (removing the need to worry about the "cp XX" lines in each of the make.sh directories).
-\end_layout
-
-\end_inset
-
-
+Points to be discussed
 \end_layout
 
 \begin_layout Standard
@@ -1099,6 +805,246 @@ SY:
  @MG I agree!
  I would vote for open a seperate issue for this.
  Let me know if any objections.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Points now on the shelf and revisit later
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A.
+
+\series default
+ Revise those readmes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG
+\end_layout
+
+\begin_layout Plain Layout
+For the Wiki:
+\end_layout
+
+\begin_layout Plain Layout
+(1) I looked back to our lab 
+\begin_inset CommandInset href
+LatexCommand href
+name "old Wiki"
+target "https://github.com/gentzkow/template_archive/wiki"
+literal "false"
+
+\end_inset
+
+,
+ I think we have several parts to add (attached below).
+ Maybe we can add some pages called 
+\begin_inset Quotes eld
+\end_inset
+
+details
+\begin_inset Quotes erd
+\end_inset
+
+ attached to our Wiki,
+ to remain the main part of Wiki concise.
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "Repository Structure"
+target "https://github.com/gentzkow/template_archive/wiki/Repository-Structure"
+literal "false"
+
+\end_inset
+
+]:
+ The part of 
+\begin_inset Quotes eld
+\end_inset
+
+Golden Rules
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "Repository Usage"
+target "https://github.com/gentzkow/template_archive/wiki/Repository-Usage"
+literal "false"
+
+\end_inset
+
+]:
+ No need to pull this.
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "Command Line Usage"
+target "https://github.com/gentzkow/template_archive/wiki/Command-Line-Usage"
+literal "false"
+
+\end_inset
+
+]:
+ I think we can add this into Wiki.
+\end_layout
+
+\begin_layout Itemize
+[
+\begin_inset CommandInset href
+LatexCommand href
+name "External dependencies"
+target "https://github.com/gentzkow/template_archive/wiki/External-Dependencies"
+literal "false"
+
+\end_inset
+
+]:
+ I think there is value to add a seperate page to document details for this.
+\end_layout
+
+\begin_layout Plain Layout
+(2) We need to brainstorm and add FAQ sections.
+\end_layout
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+–
+\end_layout
+
+\begin_layout Plain Layout
+For READMEs,
+ I propose:
+\end_layout
+
+\begin_layout Plain Layout
+(1) Move [Sections:
+ Overview,
+ Requirements,
+ Setup,
+ Example] from Wiki to the README.md in the root.
+ By doing that people will have less cost when they try to run template out-of-box.
+\end_layout
+
+\begin_layout Plain Layout
+(2) Combine the work in (E).
+\end_layout
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+–
+\end_layout
+
+\begin_layout Plain Layout
+Let me know whether this plan sounds good to you,
+ and where you think of the ReadMEs can be further revised.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MG:
+ Open a new issue after we finished everything.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+C.
+
+\series default
+ Consider whether there's a good way to get rid of the redundancy of having multiple copies of make.sh.
+ One would be to restore setup.sh and have it populate the various directories with copies of a single make.sh script.
+ We could consider adding to this code to set up the LaTex,
+ Stata,
+ etc.
+ examples and prompting the user to input which of these they would like.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SY:
+ @MG This is very clear!
+ I would vote for open a seperate issue for this.
+ Let me know if any objections.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Relatedly,
+ could it be a good idea to have make.sh always copy the files in the output folder of the previous directory to the input folder of the new one?
+ Since the idea is that the repo is always run in the numbered order,
+ it would reduce the amount of work for the users,
+ thinking of people not used to bash (removing the need to worry about the "cp XX" lines in each of the make.sh directories).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+MG:
+ Put in the roadmap.
 \end_layout
 
 \end_inset
