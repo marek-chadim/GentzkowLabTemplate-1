@@ -170,7 +170,18 @@ Decision:
 \begin_layout Standard
 
 \series bold
-[Combine F and G into one issue]
+[Combine F and G into one issue,
+ Luca is in charge of this,
+ see 
+\begin_inset CommandInset href
+LatexCommand href
+name "#18"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/18"
+literal "false"
+
+\end_inset
+
+]
 \end_layout
 
 \begin_layout Standard
@@ -642,8 +653,9 @@ status open
 
 \begin_layout Plain Layout
 SY:
- I might have missed this,
- but I think we are satisfied with our current executable defaults in 
+ I think we didn't discussed this yet,
+ but I might missed.
+ I think we are satisfied with our current executable defaults in 
 \begin_inset CommandInset href
 LatexCommand href
 name "`locak_env.sh`"
