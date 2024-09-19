@@ -309,6 +309,15 @@ robust
 \end_layout
 
 \begin_layout Standard
+(6) The idea for the external paths is that users have the option to specify external paths in local_env.sh.
+ The first time make.sh is run in a module,
+ if there are external links,
+ it will create a folder with symlinks in the root of the module.
+ This part that deals with externals can be a specific .sh file stored in lib,
+ only called by make.sh (to reduce the length of the make.sh file and make it simpler).
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 L.
