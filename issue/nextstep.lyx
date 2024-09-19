@@ -277,6 +277,19 @@ I.
  
 \series default
 Use .yaml for local_env?
+ 
+\series bold
+Luca is in charge of this,
+ see 
+\begin_inset CommandInset href
+LatexCommand href
+name "#20"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/20"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
