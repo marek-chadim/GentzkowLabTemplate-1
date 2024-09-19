@@ -173,6 +173,18 @@ D.
  Revisit dependency handling.
  We mainly talked about package dependencies.
  
+\series bold
+Luca is in charge of this,
+ see 
+\begin_inset CommandInset href
+LatexCommand href
+name "#21"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/21"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
