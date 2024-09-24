@@ -130,6 +130,19 @@ B.
 
 \series default
  Work more on how to robustly require Git LFS and also create an easy option for people who want to use the repo without Git LFS.
+ 
+\series bold
+Luca is in charge of this,
+ see 
+\begin_inset CommandInset href
+LatexCommand href
+name "#22"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/22"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
