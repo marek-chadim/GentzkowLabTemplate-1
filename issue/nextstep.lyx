@@ -230,12 +230,38 @@ E.
 \series default
  Add examples scripts + Instructions and run_XXX commands for Lyx and Matlab.
  
+\series bold
+Luca is in charge of this,
+ see 
+\begin_inset CommandInset href
+LatexCommand href
+name "#23"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/23"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Decision:
  This is straightforward.
  We should go ahead and implement.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Should we also add Julia?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -368,6 +394,21 @@ L.
 Decision:
  This is straightforward.
  We should go ahead and implement.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ This was somewhat implemented in my attempt at improving error handling (see F and G above).
+ It will also be necessary to improve check_setup and run_all - which can be done in a future step (point M)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
