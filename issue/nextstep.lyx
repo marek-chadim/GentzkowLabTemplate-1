@@ -418,6 +418,19 @@ V.
 
 \series default
  About input.txt or /input/ simlinks in the make.sh.
+ 
+\series bold
+Luca is in charge of this,
+ see 
+\begin_inset CommandInset href
+LatexCommand href
+name "#24"
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/24"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
