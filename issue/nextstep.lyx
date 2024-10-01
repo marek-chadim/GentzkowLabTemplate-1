@@ -913,6 +913,25 @@ SY:
 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+V.
+
+\series default
+ Consider abstracting some of the setup and cleanup steps in make.sh to separate .sh helper scripts,
+ both to simplify make.sh and to reduce redundancy.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+W.
+ 
+\series default
+Make unit tests for the template so we can check that everything is working correctly automatically.
+\end_layout
+
 \begin_layout Section
 Points now on the shelf and revisit later
 \end_layout
