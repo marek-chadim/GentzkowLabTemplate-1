@@ -573,6 +573,30 @@ MG:
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ Regarding check_setup,
+ see 
+\begin_inset CommandInset href
+LatexCommand href
+name "MG's comment "
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/26#issuecomment-2453177315"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 [We have this property] K.
@@ -914,6 +938,30 @@ SY:
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ See point 3.C below and comment here:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "MG's comment "
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/26#issuecomment-2453177315"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 V.
@@ -1165,6 +1213,38 @@ status open
 \begin_layout Plain Layout
 MG:
  Put in the roadmap.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LML:
+ This can be done by something like 
+\begin_inset Quotes eld
+\end_inset
+
+setup_examples.sh
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "MG's comment "
+target "https://github.com/gentzkow/GentzkowLabTemplate/issues/26#issuecomment-2453177315"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
