@@ -969,6 +969,7 @@ V.
 \series default
  Consider abstracting some of the setup and cleanup steps in make.sh to separate .sh helper scripts,
  both to simplify make.sh and to reduce redundancy.
+ Do the same to get_inputs.sh.
 \end_layout
 
 \begin_layout Standard
