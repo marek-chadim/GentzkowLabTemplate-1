@@ -33,7 +33,7 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
 
   # map file extension to export function
   DataDictionary <- function() {
-    h <- hash()
+    h <- hash::hash()
     h[["csv"]]   <-   c("fwrite", "file = outfile")
     h[["dta"]]   <-   c("write_dta", "outfile")
     h[["RData"]] <-   c("save", "file = outfile")
@@ -48,7 +48,7 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
     file <- basename(outfile)
     dir  <- dirname(outfile)
     extensions <- unlist(strsplit(file, "[.]"))
-
+    
     if (length(extensions)  > 2) {
       stop("FileNameError: Cannot have '.' in filename.")
     } else if (length(extensions) == 2) {
@@ -58,7 +58,7 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
       outfile = paste(outfile, ".RDS", sep="")
     }
 
-    if (!any(filetype %in% keys(h))) {
+    if (!any(filetype %in% hash::keys(h))) {
       stop("FileType Error: Incorrect format. Only .csv, .dta, .RData, and .RDS are allowed.")
     }
 
@@ -69,11 +69,21 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
     return(list("outfile" = outfile, "logfile" = logfile, "filetype" = filetype))
   }
 
+  CheckColumnsNotList <- function(df) {
+    column_types <- sapply(df, class)
+    type_list_columns <-column_types[column_types=="list"]
+    if (length(type_list_columns)>0) {
+      stop(paste("TypeError: No column can contain entries of type list or vector. All columns should be in vector format. The following columns are of type list:",
+                 paste(names(type_list_columns), collapse = ", ")))
+    }
+  }
+
   CheckKey <- function(df, key, colname_order = reordered_colnames) {
 
-    if (!all(key %in% colnames(df))) {
-
-      stop("KeyError: One or more key variables are not in df.")
+    missing_keys <- key[!key %in% colnames(df)]
+    if (length(missing_keys) > 0) {
+      stop(paste("KeyError: One or more key variables are not in df:",
+                 paste(missing_keys, collapse = ", ")))
     }
 
     missings <- df[, lapply(.SD, function(x) sum(is.na(x))), .SDcols = key]
@@ -83,7 +93,7 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
                  paste(key[which(missings > 0)], collapse = ", ")))
     }
 
-    nunique <- uniqueN(df, key)
+    nunique <- data.table::uniqueN(df, key)
 
     if (nrow(df) != nunique) {
 
@@ -92,10 +102,10 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
     } else {
 
       if (sortbykey) {
-        setorderv(df, key)  # sort by key values
+        data.table::setorderv(df, key)  # sort by key values
       }
 
-      setcolorder(df, colname_order)
+      data.table::setcolorder(df, colname_order)
     }
   }
 
@@ -107,7 +117,7 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
     if (logfile == FALSE) return(NULL)
 
     numeric_cols <- reordered_colnames[sapply(df, FUN = is.numeric)]
-    non_numeric_cols <- setdiff(reordered_colnames, numeric_cols)
+    non_numeric_cols <- base::setdiff(reordered_colnames, numeric_cols)
 
     numeric_sum <- df[, .(
       variable_name = numeric_cols,
@@ -154,17 +164,19 @@ SaveData <- function(df, key, outfile, logfile = NULL, appendlog = FALSE, sortby
   }
 
   WriteData <- function(df, outfile, filetype, h) {
-
-    do.call(h[[filetype]][1], list(df, eval(parse(text=h[[filetype]][2]))))
-
+    if (filetype == "RData") {
+      do.call(h[[filetype]][1], list("df", file = eval(parse(text=h[[filetype]][2]))))
+    } else {
+      do.call(h[[filetype]][1], list(df, eval(parse(text=h[[filetype]][2]))))
+    }
     print(paste0("File '", outfile, "' saved successfully."))
 
   }
 
   h <- DataDictionary()
   files <- CheckExtension(outfile, h, logfile)
+  CheckColumnsNotList(df)
   reordered_colnames <- c(key, setdiff(colnames(df), key))
-
   CheckKey(df, key, colname_order = reordered_colnames)
   WriteLog(df, key, files$outfile, files$logfile, appendlog)
   WriteData(df, files$outfile, files$filetype, h)
