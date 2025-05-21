@@ -35,3 +35,6 @@ See the Examples section of the [template instructions](https://github.com/gentz
 * Microsoft PowerPoint must be installed.
 * You may be asked to grant file access when running the program for the first time through a pop-up window.
 * You may recieve an error like this: `make.sh: Permission denied`. To rectify this, you must execute `chmod +x make.sh` in your terminal. 
+
+### Other notes
+* You may want to insert linked plots or tables that automatically refresh as the data pipeline is updated, similar to how figures are compiled in LaTeX. To do this in PowerPoint, insert the plot/table as an image by clicking on Insert > Picture > Picture from File, then click on Show Options and check Link to File. This ensures the image updates whenever the source file changes.
