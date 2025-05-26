@@ -1,4 +1,4 @@
-This directory has an example script that illustrates how to convert a PowerPoint (`.pptx`) file into a PDF using the `run_pptx` command in the GentzkowLabTemplate.
+This directory has an example slide deck that illustrates how to convert a PowerPoint (`.pptx`) file into a PDF using the `run_pptx` command in the GentzkowLabTemplate.
 
 See the Examples section of the [template instructions](https://github.com/gentzkow/GentzkowLabTemplate/wiki#examples) for the general procedure for using example scripts.
 
