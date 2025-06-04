@@ -33,7 +33,7 @@ mkdir -p "${MAKE_SCRIPT_DIR}/output"
 
 # Add symlink input files to local /input/ directory
 # (Make sure get_inputs.sh is updated to pull in all needed input files!)
-(   cd ${MAKE_SCRIPT_DIR}
+(   cd "${MAKE_SCRIPT_DIR}"
     source "${MAKE_SCRIPT_DIR}/get_inputs.sh"
 )
 
