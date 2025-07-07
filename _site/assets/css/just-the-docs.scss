@@ -1,0 +1,29 @@
+@import "just-the-docs";
+
+/* Custom styles for Gentzkow Lab Practice Tasks Website */
+
+/* Change hyperlink color from purple to slate blue */
+a {
+    color: #6A5ACD !important; /* Slate blue */
+}
+
+a:hover {
+    color: #483D8B !important; /* Dark slate blue on hover */
+}
+
+a:visited {
+    color: #6A5ACD !important; /* Keep slate blue for visited links */
+}
+
+/* Override theme-specific link styles */
+.just-the-docs a {
+    color: #6A5ACD !important;
+}
+
+.just-the-docs a:hover {
+    color: #483D8B !important;
+}
+
+.just-the-docs a:visited {
+    color: #6A5ACD !important;
+} 

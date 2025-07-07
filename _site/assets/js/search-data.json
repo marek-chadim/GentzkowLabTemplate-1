@@ -1,0 +1,471 @@
+{"0": {
+    "doc": "Research Clusters",
+    "title": "Research Clusters",
+    "content": "This guide provides comprehensive information about working with high-performance computing clusters, particularly Stanford’s Sherlock cluster. Research clusters allow us to outsource computationally expensive jobs to external computer banks. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html",
+    
+    "relUrl": "/clusters.html"
+  },"1": {
+    "doc": "Research Clusters",
+    "title": "Sherlock Overview",
+    "content": "Sherlock is a shared computer cluster funded by Stanford’s Provost and Dean of Research. It is available to Stanford faculty and affiliates. Computing clusters such as Sherlock allow us to outsource computationally expensive jobs to external computer banks. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#sherlock-overview",
+    
+    "relUrl": "/clusters.html#sherlock-overview"
+  },"2": {
+    "doc": "Research Clusters",
+    "title": "SLURM Job Scheduler",
+    "content": "The Simple Linux Utility for Resource Management (SLURM) is used by most computing clusters, including Sherlock. One can find a comprehensive guide on SLURM through its homepage and a quick cheatsheet on SLURM at this Slurm 101 website. The basic workflow in these clusters is the same as in the local computer. One should always check code carefully before submissions. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#slurm-job-scheduler",
+    
+    "relUrl": "/clusters.html#slurm-job-scheduler"
+  },"3": {
+    "doc": "Research Clusters",
+    "title": "Getting Started",
+    "content": "Logging in to Sherlock . You can access Sherlock from your terminal by running: . ssh SUNetID@login.sherlock.stanford.edu . When you first log in, check this Sherlock guide to set up credentials. Installing and Loading Software . A) Loading Software . Upon logging into the cluster, you can install desired software by inputting the following commands: . | Use module avail or module spider to see if the software is already installed in the cluster, and which versions are available. If so, use module load &lt;application/version&gt;. | Note that some applications are only available on distinct module categories (i.e., system as opposed to chemistry). | In most cases, you will want to load modules directly from the system category (i.e., module load system &lt;application/version&gt;). | Generally, you will want to load the latest versions of these modules in Sherlock: Stata, Lyx, texlive/2019, Git, and Git LFS. | If you are using miniconda (as recommended), do not load Python or R modules locally from Sherlock. | If you are not using miniconda, you should additionally load R/&lt;latest_version&gt; and Python/3.6.1. | For more information on miniconda, see Installing miniconda on Sherlock below. | . B) Installing Software . Installing new software in Sherlock is not straightforward, and should be carefully considered. Sherlock does not enable access to standard installation procedures, such as brew install or sudo install. Furthermore, Sherlock operates on a Linux OS, so software packages should be supported in Linux. You can learn more about software installations through Sherlock’s user guide. Generally, software should be installed in your local $HOME directory. If the entire GS-Lab team will require usage, software should be installed in $GROUP_HOME. Check with a lab member before installing shared software. | Individual lab members should specify file paths where their shared applications are located in their ~/.bash_profile. | Contact Sherlock Support if the above methods to load local packages fail. | . ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#getting-started",
+    
+    "relUrl": "/clusters.html#getting-started"
+  },"4": {
+    "doc": "Research Clusters",
+    "title": "Git, GitHub, and Git LFS on Sherlock",
+    "content": "To link GitHub to Sherlock, you will need to generate a new SSH key, and link this to Sherlock. You can follow the instructions here. Ensure you follow the instructions for Linux machines - following the prompts for Mac or Windows will throw errors. Also make sure you add this SSH key on your Sherlock terminal, and not on your local terminal. You will want to maintain separate keys for Sherlock use and local use. To check if you have successfully connected to GitHub, you can run ssh -T git@github.com (within your Sherlock terminal) to test SSH connection. Following this, you may use standard Git commands in the terminal (i.e., running git clone &lt;repository SSH link&gt; in your personal directory on $OAK will duplicate a remote GitHub repository). As in the standard template repository, we will need to use git lfs for many projects. To activate git lfs and clone a repository: . ml system git/&lt;latest_version&gt; ml system git-lfs/&lt;latest_version&gt; git lfs install ./setup/lfs_setup.sh git clone git@github.com:&lt;org_name&gt;/&lt;repo_name&gt;.git . ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#git-github-and-git-lfs-on-sherlock",
+    
+    "relUrl": "/clusters.html#git-github-and-git-lfs-on-sherlock"
+  },"5": {
+    "doc": "Research Clusters",
+    "title": "Installing Miniconda on Sherlock",
+    "content": "As discussed above, installing remote software is not generally recommended in Sherlock. However, you will need to install miniconda in order to follow the standard template process. If you do not wish to run conda on Sherlock, see the instructions in /setup/dependencies.md. You will need to load all relevant modules and package versions locally in Sherlock. To install miniconda on Sherlock: . | Visit the website hosting source code for miniconda. | Copy the web address for the installation code script to your local computer. The suffix for this web address should be .sh. | On Sherlock: navigate to your $HOME user repository (you can simply run the cd command in terminal to do so). | Load the curl module with module spider curl, and ensure it is up to date by specifying ml curl &lt;latest version&gt;. | Input the command curl -O &lt;source file link&gt;, where “” refers to the installation file url (e.g., https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) | Request a development node with the command sdev -m 16G and execute the shell script with bash &lt;Miniconda3-latest-Linux-x86_64.sh&gt;. Follow the prompts in the .sh file. | . Note: You will only need to install miniconda once, but you will need to initialize a new conda environment (following the standard procedure in template) whenever you hope to submit a new job. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#installing-miniconda-on-sherlock",
+    
+    "relUrl": "/clusters.html#installing-miniconda-on-sherlock"
+  },"6": {
+    "doc": "Research Clusters",
+    "title": "Setting up the Sherlock Environment",
+    "content": "You should follow the protocol defined by the points below to set up your environment. These steps should always be taken prior to submitting a job, and after loading/installing the above software. Note: The ~/.bash_profile and the ~/.bashrc files serve different purposes. The ~/.bash_profile defines the paths of the software that will be used on an interactive login shell. The ~/.bashrc script is the file that is checked and executed when using a non-login interactive shell. Thus, the ~/.bashrc file is the one that will be checked when you submit a job to Sherlock. Find further information here. | Explicitly specify your Python or conda path at the beginning of your ~/.bashrc script, by setting: export PYTHONPATH=$OAK/&lt;YourPythonPathInSherlock&gt;/python3.6/site-packages:$PYTHONPATH . or if using conda: . source &lt;YourCondaPathInSherlock&gt;/conda.sh conda activate &lt;CONDAENVIRONMENT&gt; . | Ensure you have imported all required modules. | Initialize your environment as required by your project (usually in a repository README or wiki). | Generally, loading required modules in Sherlock will enable command line usage. There is no need to specify the executables path in a ~/.bash_profile.sh script as we do in template. | . ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#setting-up-the-sherlock-environment",
+    
+    "relUrl": "/clusters.html#setting-up-the-sherlock-environment"
+  },"7": {
+    "doc": "Research Clusters",
+    "title": "Accessing Storage Locations for Sherlock Edits",
+    "content": "Sherlock provides access to multiple file systems with different storage characteristics. We recommend following the below workflow. | Clone any GitHub directory to one’s personal folder in gentzkow. These can be accessed by running the command cd $OAK in your Sherlock terminal. | Rsync the entire repository and external inputs to SCRATCH. | Run the job within SCRATCH. | Commit the job. | Rsync back to OAK. | . In certain circumstances, L_SCRATCH is preferred to SCRATCH. This is the case if: . | The job involves the creating of will temp files created by scripts. | The job involves small (&lt;100GB) files that need to be read/written onto many times in the course of a job. | . Note: If you are working with very large files, it is important to ensure that lab members do not needlessly copy over these files to each of their repositories on Sherlock (in particular, within $OAK). These files should instead be RSynced once to a shared location, which serves as a relative path for all lab members (for example, in the lab folder in $OAK). ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#accessing-storage-locations-for-sherlock-edits",
+    
+    "relUrl": "/clusters.html#accessing-storage-locations-for-sherlock-edits"
+  },"8": {
+    "doc": "Research Clusters",
+    "title": "Editing Files in Sherlock",
+    "content": "There are four distinct ways to edit files using Sherlock: . 1. Direct Terminal Editing . You can directly edit files in Sherlock interactively, using a text editor such as nano, micro, or vim. 2. Local Editing with Git . Provided that GitHub integration has been set up, you can make file edits on your local computer in the code editor of your choice, push those changes to a remote repository hosted on GitHub, and then pull those changes down to your personal Sherlock directory in $OAK. 3. Visual Studio Code Remote SSH . If you use Visual Studio Code, you can install and utilize the “Remote - SSH” extension provided through Microsoft. This extension will allow you to access Sherlock through Visual Studio, and make edits as you might on a local Visual Studio project. You will need to login to Sherlock following the standard process outlined above. 4. SSHFS Mounting . You can set up local editing on Sherlock by following these instructions relating to SSHFS. As an example, you could run the following after installing SSHFS in your local system: . mkdir ~/sherlock_oak # will create an empty directory in your local $HOME directory. sshfs &lt;sunet id&gt;@login.sherlock.stanford.edu:/oak/stanford/groups/gentzkow ~/sherlock_oak # will mount the $OAK research cluster in Sherlock to your empty sherlock_oak folder in $HOME. If you choose to utilize the fourth approach, remember to always unmount your folder when you have finished editing. You can utilize the following command to do so: umount ~/sherlock_oak. Important: If your Mac goes to sleep and you are still mounted to Sherlock, your computer will continually try to access Sherlock. This will result in your IP address being blacklisted from Sherlock. While this is reversible, we want to avoid this situation if possible. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#editing-files-in-sherlock",
+    
+    "relUrl": "/clusters.html#editing-files-in-sherlock"
+  },"9": {
+    "doc": "Research Clusters",
+    "title": "Sample Batch Script for Testing and Job Submission",
+    "content": "Each bash script you run to submit jobs will differ slightly based on its purpose, the anticipated resources required, and the specified clusters for execution. However, the general format will be similar to the below: . #!/bin/bash # #SBATCH --job-name=run_all #SBATCH --time=2:00:00 #SBATCH --mem=50GB #SBATCH --partition=gentzkow #SBATCH --mail-type=ALL #SBATCH --mail-user=&lt;USER&gt;@stanford.edu #SBATCH --ntasks=1 srun python run_all.py . For more information on how to submit and run jobs on Sherlock, see the user documentation. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#sample-batch-script-for-testing-and-job-submission",
+    
+    "relUrl": "/clusters.html#sample-batch-script-for-testing-and-job-submission"
+  },"10": {
+    "doc": "Research Clusters",
+    "title": "Stanford Gentzkow Node",
+    "content": "MG has purchased resources on Stanford’s Sherlock 2 cluster. Jobs submitted to this partition only compete with other lab members for resources, and interactive jobs can request all available resources. The partition consists of: . | A Dell C6320 server with 20 cores, 256G of RAM, and a 200G SSD. | . You can submit all of your jobs to multiple partitions. This is done by setting #SBATCH --partition=gentzkow,hns,normal at the beginning of your sbatch script. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#stanford-gentzkow-node",
+    
+    "relUrl": "/clusters.html#stanford-gentzkow-node"
+  },"11": {
+    "doc": "Research Clusters",
+    "title": "Stanford Humanities and Sciences Nodes",
+    "content": "The Humanities and Sciences Dean’s Office at Stanford has purchased Sherlock nodes for its researchers’ exclusive use. These nodes belong to the hns partition. This partition consists of: . | 10 CPU nodes, which have 64 GB of RAM and 16 multi-core CPUs. | hns_gpu, a graphical processing unit node with 128 GB of RAM, a 8 Tesla K80 GPU @ 1.87 Tflops (double precision) and a 5.60 Tflops GPU (single precision), and 16 CPUs. | a large memory node with 1.5 TB of RAM. Job requests that require over 64 GB of RAM are automatically sent to this node. | . Access these nodes by adding -p hns to our job submission requests. Similarly, we can run graphical processing unit (GPU) jobs by adding -p hns_gpu --gres gpu:1 to our request commands. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#stanford-humanities-and-sciences-nodes",
+    
+    "relUrl": "/clusters.html#stanford-humanities-and-sciences-nodes"
+  },"12": {
+    "doc": "Research Clusters",
+    "title": "Testing Scripts Prior to Job Submission",
+    "content": "There are two steps of testing that you should follow prior to submitting. | Test your bash script before submitting a job to be sure that the environment is set up correctly. | One way to do this is to have your sbatch script call only a specific lib file. These files gather functions that are used throughout the repository, and hence run quickly. However, they need your environment to be fully working to run and thus serve as a fast check for your setup. | . | Test your full script by running it on a subset of the data. You can also interactively test out your code by running the command sdev -m16GB. | . In general, your jobs are assigned a node depending on their priority and the resources needed. If you allocate your job only to the gentzkow partition (see above) then it will run whenever the partition has a free node, regardless of the time or memory requested. However, if you opt for multiple partitions, then the allocation depends on the time and memory requested. Since your environment testing is fast, we suggest that you adjust the time and memory needed and then allocate your job to multiple partitions: #SBATCH --partition=gentzkow,owners to access whichever is free. Remember to remove the owners partition to run your full job as you do not have priority on it. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#testing-scripts-prior-to-job-submission",
+    
+    "relUrl": "/clusters.html#testing-scripts-prior-to-job-submission"
+  },"13": {
+    "doc": "Research Clusters",
+    "title": "Running Jobs in Sherlock",
+    "content": "After setting up your environment and testing your code you can submit a job. Cluster-specific guides on submitting and running jobs can be found here for Sherlock. If you are unsure of whether a job should be submitted to a cluster, first ask another RA and then proceed to MG if necessary. ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#running-jobs-in-sherlock",
+    
+    "relUrl": "/clusters.html#running-jobs-in-sherlock"
+  },"14": {
+    "doc": "Research Clusters",
+    "title": "Additional Resources",
+    "content": ". | Sherlock User Guide | SLURM Documentation | SLURM Quick Start Guide | . ",
+    "url": "/GentzkowLabTemplateFork/clusters.html#additional-resources",
+    
+    "relUrl": "/clusters.html#additional-resources"
+  },"15": {
+    "doc": "Home",
+    "title": "Gentzkow Lab Practice Tasks",
+    "content": "Welcome to the Gentzkow Lab practice tasks website! This site contains guides and practice tasks designed to help you learn the Gentzkow Lab workflow and tools. ",
+    "url": "/GentzkowLabTemplateFork/#gentzkow-lab-practice-tasks",
+    
+    "relUrl": "/#gentzkow-lab-practice-tasks"
+  },"16": {
+    "doc": "Home",
+    "title": "Getting Started",
+    "content": "If you’re new to the lab, start here: . | Read the Lab Manual and the GentzkowLabTemplate wiki. | Ensure your computer is set up as described in the Setup Instructions. | Read through the recommended materials in the Lab Manual about Git and Github to familiarize yourself with the main concepts | . ",
+    "url": "/GentzkowLabTemplateFork/#getting-started",
+    
+    "relUrl": "/#getting-started"
+  },"17": {
+    "doc": "Home",
+    "title": "Essential Resources",
+    "content": ". | Lab Manual - Complete lab procedures and guidelines | GentzkowLabTemplate Wiki - Template documentation | Sherlock Documentation - Stanford’s HPC cluster guide | . Note: This website’s content is largely based on the archived GSLab Manual. ",
+    "url": "/GentzkowLabTemplateFork/#essential-resources",
+    
+    "relUrl": "/#essential-resources"
+  },"18": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/",
+    
+    "relUrl": "/"
+  },"19": {
+    "doc": "Reference",
+    "title": "Reference Materials",
+    "content": "This section contains reference guides and documentation that you’ll need throughout your work in the Gentzkow Lab. These resources provide detailed information about specific tools, procedures, and best practices. ",
+    "url": "/GentzkowLabTemplateFork/reference.html#reference-materials",
+    
+    "relUrl": "/reference.html#reference-materials"
+  },"20": {
+    "doc": "Reference",
+    "title": "Reference",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/reference.html",
+    
+    "relUrl": "/reference.html"
+  },"21": {
+    "doc": "Setup",
+    "title": "Setup Instructions",
+    "content": "This section contains all the setup instructions you need to get started working in the Gentzkow Lab. ",
+    "url": "/GentzkowLabTemplateFork/setup.html#setup-instructions",
+    
+    "relUrl": "/setup.html#setup-instructions"
+  },"22": {
+    "doc": "Setup",
+    "title": "Setup",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/setup.html",
+    
+    "relUrl": "/setup.html"
+  },"23": {
+    "doc": "Software Setup",
+    "title": "Software Setup Guide",
+    "content": "This guide covers all the essential and recommended software you should to install and configure to work effectively in the Gentzkow Lab. We store our project repositories in GitHub, and individual repositories declare specific software requirements. Below are software that we use across many projects and recommend lab members to be familiar with. ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html#software-setup-guide",
+    
+    "relUrl": "/setup_instr.html#software-setup-guide"
+  },"24": {
+    "doc": "Software Setup",
+    "title": "Version Control and Task Management: Git, GitHub, and git-lfs",
+    "content": "Overview . We use the Git version control system, augmented with git-lfs, to organize our code and data. We use issues on GitHub to manage tasks and structure communication around projects. We use GitHub wikis to store supplemental information related to our projects. Resources . Basic (take about 20 minutes total and well worth it): . | Git Handbook | Understanding the GitHub Flow | Mastering Issues | Mastering Markdown | . Detailed: . | Pro Git | Version Control with Git, Chapters 4-9 | . Setup . | Create a GitHub account and install the Git desktop / command line clients | Install Git LFS. Note that you only need to do step 1 under “Getting Started” at this point | Give your GitHub ID to a lab member who can give you permissions to the appropriate repositories | . ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html#version-control-and-task-management-git-github-and-git-lfs",
+    
+    "relUrl": "/setup_instr.html#version-control-and-task-management-git-github-and-git-lfs"
+  },"25": {
+    "doc": "Software Setup",
+    "title": "Large File Storage: Dropbox and Google Drive",
+    "content": "We use Dropbox or Google Drive to store files that are too big for GitHub (even with LFS) or are not project-specific. Setup . | Install Dropbox and Google Drive | Ask a lab member to give you access to any Dropbox directories or Shared Drives you will need for your project(s) | . ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html#large-file-storage-dropbox-and-google-drive",
+    
+    "relUrl": "/setup_instr.html#large-file-storage-dropbox-and-google-drive"
+  },"26": {
+    "doc": "Software Setup",
+    "title": "Programming Languages",
+    "content": "Python . Resources: . | Software Carpentry | Learning Python | DataCamp | . Setup: Check for install by typing python at terminal. If not installed, install here. R . Resources: . | Analysis and Programming tutorials from Software Carpentry | R for Data Science | DataCamp | . Setup: Install R. Install R Studio. Stata . Resources: . | UNC Population Center Tutorial | A Little Bit of Stata Programming Goes a Long Way | . Setup: Install Stata, typically licensed via your university. ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html#programming-languages",
+    
+    "relUrl": "/setup_instr.html#programming-languages"
+  },"27": {
+    "doc": "Software Setup",
+    "title": "Mathematical Writing",
+    "content": "LyX . Setup: Install LyX . TeX Live . Setup: Install TeX Live . ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html#mathematical-writing",
+    
+    "relUrl": "/setup_instr.html#mathematical-writing"
+  },"28": {
+    "doc": "Software Setup",
+    "title": "Development Environment",
+    "content": "Visual Studio Code . We recommend using Visual Studio Code as your primary code editor. It provides excellent support for: . | Python, R, and Stata syntax highlighting | Git integration | Remote development capabilities | Extensions for various programming languages and tools | . Setup: Download and install Visual Studio Code . Terminal and Command Line . Familiarity with the command line is essential for working with Git, running scripts, and managing your development environment. Resources: . | Command Line Crash Course | Bash Tutorial | . ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html#development-environment",
+    
+    "relUrl": "/setup_instr.html#development-environment"
+  },"29": {
+    "doc": "Software Setup",
+    "title": "Environment Configuration",
+    "content": "Python Environment Management . We recommend using conda or virtual environments to manage Python packages and dependencies. Setup: . | Install Miniconda or Anaconda | Create separate environments for different projects | . ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html#environment-configuration",
+    
+    "relUrl": "/setup_instr.html#environment-configuration"
+  },"30": {
+    "doc": "Software Setup",
+    "title": "Software Setup",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/setup_instr.html",
+    
+    "relUrl": "/setup_instr.html"
+  },"31": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "Task 1: GentzkowLabTemplate",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/task1.html#task-1-gentzkowlabtemplate",
+    
+    "relUrl": "/task1.html#task-1-gentzkowlabtemplate"
+  },"32": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "Overview",
+    "content": "This task introduces you to the Gentzkow Lab template and workflow. You’ll learn how to set up a new project, understand the directory structure, and practice the basic workflow that we use for all our research projects. ",
+    "url": "/GentzkowLabTemplateFork/task1.html#overview",
+    
+    "relUrl": "/task1.html#overview"
+  },"33": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "Learning Objectives",
+    "content": "By the end of this task, you will be able to: . | Set up a new project using the GentzkowLabTemplate | Understand the project directory structure | Navigate the basic workflow (setup → code → data → papers) | Use Git for version control | Work with the lab’s coding standards | . ",
+    "url": "/GentzkowLabTemplateFork/task1.html#learning-objectives",
+    
+    "relUrl": "/task1.html#learning-objectives"
+  },"34": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "Prerequisites",
+    "content": "Before starting this task, ensure you have: . | Completed the setup instructions | Installed Git and Git LFS | Set up your GitHub account | Installed VSCode | . ",
+    "url": "/GentzkowLabTemplateFork/task1.html#prerequisites",
+    
+    "relUrl": "/task1.html#prerequisites"
+  },"35": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "Task Description",
+    "content": "Follow the steps below, making sure to follow all workflow procedures (issues, branching, PRs, etc.) as described in the Lab Manual. ",
+    "url": "/GentzkowLabTemplateFork/task1.html#task-description",
+    
+    "relUrl": "/task1.html#task-description"
+  },"36": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "A) Getting Started with the Template",
+    "content": "1. Repository Setup . | Fork the GentzkowLabTemplate repository (do not click on “Use this template”). | Invite the practice task assigner as a collaborator. | Clone your fork locally. | Run setup.sh and follow the instructions as prompted. | . 2. Test run . | Run run_all.sh to confirm the repository is working correctly. | . ",
+    "url": "/GentzkowLabTemplateFork/task1.html#a-getting-started-with-the-template",
+    
+    "relUrl": "/task1.html#a-getting-started-with-the-template"
+  },"37": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "B) Open Issues and Make Required Changes",
+    "content": "1. Open an Issue: Update paper and slides with example analysis . | Open a new issue and create a branch for it as described in the Lab Manual | The steps below should be performed in this issue branch. | . 2. Move and Run an Example Script . | Choose one language (R, Stata, or Python) from examples/. | Follow the instructions in the README file within the chosen examples/ folder to run the modules 1_data and 2_analysis. As explained in the README files, the steps are: . | Copy the relevant example script(s) (e.g., from examples/stata/analyze_data.do, examples/r/analyze_data.R, or examples/python/analyze_data.py) into the appropriate module’s source/ directory (e.g., 2_analysis/source/). | Copy any required input files (e.g., mpg.csv from examples/inputs_for_examples/) into the correct location (e.g., 0_raw/). | Delete the placeholder my_shell_script.sh from all source/ directories. | Update the relevant make.sh to call your chosen script using the appropriate helper (e.g., run_stata, run_R, or run_python). | Run the module (e.g., bash 2_analysis/make.sh) and confirm that the expected outputs (figures, tables) are generated in the output/ directory. | . | . 3. Compile paper with generated output . | Follow the instructions in the README file in examples/latex to compile the paper using the figures and table you generated in the previous step. | Run the module 4_paper and confirm that the expected outputs (figures, tables) are generated in the output/ directory. | . 4. Run the entire repository to make sure all modules run . | Run the entire repository with run_all.sh to make sure it runs correctly. | . 5. Push your changes to the issue branch . | Commit your changes with a helpful message, referencing the issue. | Push the changes to the relevant issue branch. | . ",
+    "url": "/GentzkowLabTemplateFork/task1.html#b-open-issues-and-make-required-changes",
+    
+    "relUrl": "/task1.html#b-open-issues-and-make-required-changes"
+  },"38": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "C) Practicing working on issues",
+    "content": "1. Edit analysis scripts: plot . | Edit your analysis script so that the city fuel economy plot displays fuel economy in logs. | Regenerate the output and confirm the change. | Commit your changes with a helpful message, referencing the issue. | . 2. Edit analysis scripts: table . | Edit your analysis script so that the standard errors in the regression are clustered by year. | Export the regression results (coefficients, SEs, p-values) to a new table. | Regenerate the output and confirm the change. | Add the new table to the paper and run 4_paper. | Make sure to run the entire repo and confirm it runs well. | Commit your changes with a helpful message, referencing the issue. | . 3. Add your new table and figure to the slides . | Follow the instructions in the README file in examples/latex to compile the slides. | Edit the slides to include the city fuel economy plot in logs and the table with clustered standard errors in the slides. | Run 3_slides. | Confirm the outputs are present in the respective output/ directories. | Make sure to run the entire repo and confirm it runs well. | Commit your changes with a helpful message, referencing the issue. | . ",
+    "url": "/GentzkowLabTemplateFork/task1.html#c-practicing-working-on-issues",
+    
+    "relUrl": "/task1.html#c-practicing-working-on-issues"
+  },"39": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "D) Pull Request and Peer Review",
+    "content": "1. PR and Review . | Open a Pull Request linked to your issue to merge your work into the main branch, following PR guidelines. | Request a peer review from the practice task assigner. | When the PR is approved, close your issue with a summary and deliverables. | . Note: Wait until the PR has been merged before proceeding to Task 2: Sherlock Extension. ",
+    "url": "/GentzkowLabTemplateFork/task1.html#d-pull-request-and-peer-review",
+    
+    "relUrl": "/task1.html#d-pull-request-and-peer-review"
+  },"40": {
+    "doc": "Task 1 - GentzkowLabTemplate",
+    "title": "Task 1 - GentzkowLabTemplate",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/task1.html",
+    
+    "relUrl": "/task1.html"
+  },"41": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "Task 2: Sherlock Extension",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/task2.html#task-2-sherlock-extension",
+    
+    "relUrl": "/task2.html#task-2-sherlock-extension"
+  },"42": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "Overview",
+    "content": "This task builds upon Task 1 by introducing you to high-performance computing clusters, specifically Stanford’s Sherlock cluster. You’ll learn how to submit jobs, manage computational resources, and work with large datasets that require more computing power than your local machine. ",
+    "url": "/GentzkowLabTemplateFork/task2.html#overview",
+    
+    "relUrl": "/task2.html#overview"
+  },"43": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "Learning Objectives",
+    "content": "By the end of this task, you will be able to: . | Connect to and navigate the Sherlock cluster | Submit batch jobs using SLURM | Monitor and manage job queues and computational resources | Work with large datasets on remote servers | Use the lab’s shared computing resources and storage systems | Understand SLURM job scheduling and resource allocation | . ",
+    "url": "/GentzkowLabTemplateFork/task2.html#learning-objectives",
+    
+    "relUrl": "/task2.html#learning-objectives"
+  },"44": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "Prerequisites",
+    "content": "Before starting this task, ensure you have: . | Completed Task 1: GentzkowLabTemplate | A Stanford SUNet ID and access to Sherlock | Basic familiarity with command line operations | Understanding of the lab’s workflow from Task 1 | . ",
+    "url": "/GentzkowLabTemplateFork/task2.html#prerequisites",
+    
+    "relUrl": "/task2.html#prerequisites"
+  },"45": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "Task Description",
+    "content": "Follow the steps below, making sure to follow all workflow procedures (issues, branching, PRs, etc.) as described in the Lab Manual. ",
+    "url": "/GentzkowLabTemplateFork/task2.html#task-description",
+    
+    "relUrl": "/task2.html#task-description"
+  },"46": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "A) Sherlock Setup and Access",
+    "content": "1. Review Sherlock Documentation . | Thoroughly review the purpose and features of Sherlock here. You may refer to the same link throughout this task to read further instructions. | . 2. Connect to Sherlock . | Log on to Sherlock following the instructions here. | Ensure you have access to the correct partitions ($OAK, $HOME, $GROUP_HOME, $SCRATCH, and $GROUP_SCRATCH) with the sh_part command. | If you do not have access to $OAK, ask a lab member for access. | . 3. Set Up Personal Directory and Tools . | Set up your personal directory under $OAK. | Set up Dropbox and Rclone on Sherlock. You can follow the instructions here and here. | Initialize GitHub usage on Sherlock by generating a new SSH key and adding it to Sherlock. | . ",
+    "url": "/GentzkowLabTemplateFork/task2.html#a-sherlock-setup-and-access",
+    
+    "relUrl": "/task2.html#a-sherlock-setup-and-access"
+  },"47": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "B) Repository Setup on Sherlock",
+    "content": "1. Clone and Test Repository . | Clone your remote template repository to your personal directory in $OAK. | Make sure the repository is working by running run_all.sh and confirming all the outputs are generated correctly. | You should see the standard output appear in your $OAK directory. | . Note: You will not need to set up command line usage on Sherlock - simply load the relevant applications with the module spider and ml &lt;application/version&gt; commands. For more on this, see Setting up the environment in the Research Clusters section of the manual. ",
+    "url": "/GentzkowLabTemplateFork/task2.html#b-repository-setup-on-sherlock",
+    
+    "relUrl": "/task2.html#b-repository-setup-on-sherlock"
+  },"48": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "C) Working with Issues and Changes",
+    "content": "1. Create Issue for Log Analysis . | Create a new issue to change the highway fuel economy analysis to use logs. | Follow similar steps as you did previously in Task 1. | . 2. Implement Changes . | Add the new figure to the slides. | Follow the workflow procedures (issues, branching, PRs, etc.) as described in the Lab Manual. | . ",
+    "url": "/GentzkowLabTemplateFork/task2.html#c-working-with-issues-and-changes",
+    
+    "relUrl": "/task2.html#c-working-with-issues-and-changes"
+  },"49": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "D) Job Submission and Execution",
+    "content": "1. Submit Batch Job . | Submit a job to run the full repository with these edits, following the instructions here. | Ensure the job completes successfully and generates all expected outputs. | . ",
+    "url": "/GentzkowLabTemplateFork/task2.html#d-job-submission-and-execution",
+    
+    "relUrl": "/task2.html#d-job-submission-and-execution"
+  },"50": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "E) Pull Request and Completion",
+    "content": "1. Open Pull Request . | Open a PR as before, following the same workflow procedures used in Task 1. | Ensure all changes are properly documented and the repository runs correctly on Sherlock. | . Note: Make sure to follow all workflow procedures (issues, branching, PRs, etc.) as described in the Lab Manual. ",
+    "url": "/GentzkowLabTemplateFork/task2.html#e-pull-request-and-completion",
+    
+    "relUrl": "/task2.html#e-pull-request-and-completion"
+  },"51": {
+    "doc": "Task 2 - Sherlock Extension",
+    "title": "Task 2 - Sherlock Extension",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/task2.html",
+    
+    "relUrl": "/task2.html"
+  },"52": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "Task 3: Python-based Archived Template",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/task3.html#task-3-python-based-archived-template",
+    
+    "relUrl": "/task3.html#task-3-python-based-archived-template"
+  },"53": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "Overview",
+    "content": "This task introduces you to the legacy Python-based template that was used before the current GentzkowLabTemplate, which is based in shell. Even though most projects don’t currently use this template, it is useful to get some experience with it. ",
+    "url": "/GentzkowLabTemplateFork/task3.html#overview",
+    
+    "relUrl": "/task3.html#overview"
+  },"54": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "Learning Objectives",
+    "content": "By the end of this task, you will be able to: . | Understand the differences between the legacy and current templates | Work with Python-based research workflows | Navigate archived project structures | . ",
+    "url": "/GentzkowLabTemplateFork/task3.html#learning-objectives",
+    
+    "relUrl": "/task3.html#learning-objectives"
+  },"55": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "Prerequisites",
+    "content": "Before starting this task, ensure you have: . | Completed Task 1: GentzkowLabTemplate | Completed Task 2: Sherlock Extension | Basic Python programming knowledge | Understanding of the current lab workflow | . ",
+    "url": "/GentzkowLabTemplateFork/task3.html#prerequisites",
+    
+    "relUrl": "/task3.html#prerequisites"
+  },"56": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "Task Description",
+    "content": "Follow the steps below, making sure to follow all workflow procedures (issues, branching, PRs, etc.) as described in the Lab Manual. ",
+    "url": "/GentzkowLabTemplateFork/task3.html#task-description",
+    
+    "relUrl": "/task3.html#task-description"
+  },"57": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "A) Repository Setup",
+    "content": "1. Fork and Clone Archived Template . | Create your own public repository from the archived template and invite the practice task assigner as a collaborator. | Make sure you fork this repository, do not click “Use this template”. | . 2. Test Repository Functionality . | Run the repository from beginning to end to replicate the output. | Ensure all components are working correctly before proceeding. | . ",
+    "url": "/GentzkowLabTemplateFork/task3.html#a-repository-setup",
+    
+    "relUrl": "/task3.html#a-repository-setup"
+  },"58": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "B) Working with Issues and Changes",
+    "content": "1. Create Issue for Histogram Modification . | Open a new issue to modify the code in the data folder so that the histogram in output/chips_sold.pdf displays percentages instead of counts. | . 2. Implement Changes . | Update the data folder with your new histogram as an output by running data/make.py. | To make sure your changes are reflected in the paper, run paper_slides/make.py. | Commit this file with a helpful message. | . ",
+    "url": "/GentzkowLabTemplateFork/task3.html#b-working-with-issues-and-changes",
+    
+    "relUrl": "/task3.html#b-working-with-issues-and-changes"
+  },"59": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "C) Pull Request and Completion",
+    "content": "1. Open Pull Request . | Open a PR to close the issue as usual, following the same workflow procedures used in previous tasks. | Ensure all changes are properly documented and the repository runs correctly. | . ",
+    "url": "/GentzkowLabTemplateFork/task3.html#c-pull-request-and-completion",
+    
+    "relUrl": "/task3.html#c-pull-request-and-completion"
+  },"60": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "Next Steps",
+    "content": "Congratulations! You’ve completed all three practice tasks. You now have a comprehensive understanding of the Gentzkow Lab workflow, from basic setup to high-performance computing and historical context. You’re ready to contribute to active research projects in the lab. ",
+    "url": "/GentzkowLabTemplateFork/task3.html#next-steps",
+    
+    "relUrl": "/task3.html#next-steps"
+  },"61": {
+    "doc": "Task 3 - Python-based Archived Template",
+    "title": "Task 3 - Python-based Archived Template",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/task3.html",
+    
+    "relUrl": "/task3.html"
+  },"62": {
+    "doc": "Tasks",
+    "title": "Practice Tasks",
+    "content": "This section contains all the practice tasks designed to help you master the Gentzkow Lab workflow. Each task builds upon the previous one, so we recommend completing them in order. ",
+    "url": "/GentzkowLabTemplateFork/tasks.html#practice-tasks",
+    
+    "relUrl": "/tasks.html#practice-tasks"
+  },"63": {
+    "doc": "Tasks",
+    "title": "Task Overview",
+    "content": ". | Task 1: GentzkowLabTemplate - Learn the basics of the lab template and workflow | Task 2: Sherlock Extension - Work with high-performance computing clusters | Task 3: Python-based Archived Template - Explore the legacy Python template | . ",
+    "url": "/GentzkowLabTemplateFork/tasks.html#task-overview",
+    
+    "relUrl": "/tasks.html#task-overview"
+  },"64": {
+    "doc": "Tasks",
+    "title": "Prerequisites",
+    "content": "Before starting these tasks, make sure you have: . | Read the Lab Manual | Reviewed the GentzkowLabTemplate wiki | Set up your computer according to the setup instructions | Installed VSCode | Familiarized yourself with Git and GitHub concepts | . ",
+    "url": "/GentzkowLabTemplateFork/tasks.html#prerequisites",
+    
+    "relUrl": "/tasks.html#prerequisites"
+  },"65": {
+    "doc": "Tasks",
+    "title": "Getting Help",
+    "content": "If you encounter issues during any task: . | Check the Lab Manual for detailed procedures | Review the specific task instructions carefully | Reach out to your practice task assigner for guidance | . Note: AI tools can be very helpful for coding, debugging, and learning new concepts. The lab sponsors ChatGPT Plus subscriptions for research assistants. Don’t hesitate to use AI assistance when working through these tasks - it can help you understand complex concepts, debug code issues, and learn best practices more efficiently. Stanford also provides free access to the AI Playground, a platform that allows you to use various AI models from vendors like OpenAI, Google, and Anthropic in one spot. ",
+    "url": "/GentzkowLabTemplateFork/tasks.html#getting-help",
+    
+    "relUrl": "/tasks.html#getting-help"
+  },"66": {
+    "doc": "Tasks",
+    "title": "Tasks",
+    "content": " ",
+    "url": "/GentzkowLabTemplateFork/tasks.html",
+    
+    "relUrl": "/tasks.html"
+  }
+}
