@@ -33,8 +33,8 @@ for file_path in "${INPUT_FILES[@]}"; do
     fi
     if [[ -e "$resolved_path" ]]; then  # check if the path exists
       file_name=$(basename "$resolved_path")
-      absolute_path=$(cd "$(dirname "$resolved_path")" && pwd -P)/$(basename "$resolved_path")
-      ln -sfn "$absolute_path" "$MAKE_SCRIPT_DIR/input/$file_name"  # create symlink in module input dir
+    relative_path=$(realpath --relative-to="$MAKE_SCRIPT_DIR/input" "$resolved_path")
+    ln -sfn "$relative_path" "$MAKE_SCRIPT_DIR/input/$file_name" # create symlink in module input dir
       links_created=true
     else
       echo -e "\033[0;31mWarning\033[0m in \033[0;34mget_inputs.sh\033[0m: $file_path does not exist or is not a valid file path." >&2
