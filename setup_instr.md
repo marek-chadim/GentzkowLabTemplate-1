@@ -29,7 +29,7 @@ We use the Git version control system, augmented with git-lfs, to organize our c
 
 ### Setup
 
-1. Create a GitHub account and install the Git desktop / command line clients
+1. Create a GitHub account and install the [Git desktop / command line clients](https://docs.github.com/en/get-started/git-basics/set-up-git)
 2. Install [Git LFS](https://git-lfs.com/). Note that you only need to do step 1 under "Getting Started" at this point. If using MacOS, we recommend installing with [Homebrew](https://brew.sh/).
 3. Give your GitHub ID to a lab member who can give you permissions to the appropriate repositories
 
