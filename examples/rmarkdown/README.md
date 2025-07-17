@@ -8,7 +8,7 @@ See the Examples section of the [template instructions](https://github.com/gentz
 
 ### Steps to set up the R Markdown example 
 
-1. Place `mr_report.Rmd` in `1_data/source/`
+1. Place `my_report.Rmd` in `1_data/source/`
 2. Replace these lines in `1_data/make.sh`
   
     ```
