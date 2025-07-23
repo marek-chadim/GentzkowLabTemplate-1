@@ -7,6 +7,7 @@
 # You can also use paths to folders:
 # ../examples/inputs_for_examples/
 INPUT_FILES=(
+    ../0_raw/mpg.csv
     # /path/to/your/input/file.csv (replace with your actual input paths)
     # Add more input paths as needed
 )

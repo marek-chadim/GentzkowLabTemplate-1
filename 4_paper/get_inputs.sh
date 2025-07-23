@@ -8,6 +8,9 @@
 # ../examples/inputs_for_examples/
 INPUT_FILES=(
     # /path/to/your/input/file.csv (replace with your actual input paths)
+    ../2_analysis/output/figure_city.jpg
+    ../2_analysis/output/figure_hwy.jpg
+    ../2_analysis/output/table_reg.tex 
     # Add more input paths as needed
 )
 
