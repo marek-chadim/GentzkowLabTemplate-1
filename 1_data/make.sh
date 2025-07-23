@@ -25,6 +25,7 @@ echo -e "\n\nMaking module \033[35m${MODULE}\033[0m with shell ${SHELL}"
 source "${REPO_ROOT}/local_env.sh"
 source "${REPO_ROOT}/lib/shell/run_shell.sh"
 source "${REPO_ROOT}/lib/shell/run_R.sh"
+source "${REPO_ROOT}/lib/shell/run_stata.sh"
 
 # Clear output directory
 # (Guarantees that all output is produced from a clean run of the code)
@@ -47,6 +48,8 @@ cd "${MAKE_SCRIPT_DIR}/source"
 
 run_shell my_shell_script.sh "${LOGFILE}" || exit 1
 run_R wrangle_data.r "${LOGFILE}" || exit 1
+run_stata wrangle_data.do "${LOGFILE}" || exit 1
+
 ) || false
 
 echo -e "\nmake.sh finished at $(date '+%Y-%m-%d %H:%M:%S')" | tee -a "${LOGFILE}"
