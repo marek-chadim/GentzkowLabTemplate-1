@@ -46,7 +46,7 @@ mkdir -p "${MAKE_SCRIPT_DIR}/output"
 (
 cd "${MAKE_SCRIPT_DIR}/source"
 
-run_shell my_shell_script.sh "${LOGFILE}" || exit 1
+#run_shell my_shell_script.sh "${LOGFILE}" || exit 1
 run_R analyze_data.r "${LOGFILE}" || exit 1
 run_stata analyze_data.do "${LOGFILE}" || exit 1
 
