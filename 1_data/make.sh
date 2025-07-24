@@ -48,10 +48,10 @@ mkdir -p "${MAKE_SCRIPT_DIR}/output"
 (
 cd "${MAKE_SCRIPT_DIR}/source"
 
-#run_shell my_shell_script.sh "${LOGFILE}" || exit 1
-#run_R wrangle_data.r "${LOGFILE}" || exit 1
-#run_stata wrangle_data.do "${LOGFILE}" || exit 1
-#run_python wrangle_data.py "${LOGFILE}" || exit 1
+run_shell my_shell_script.sh "${LOGFILE}" || exit 1
+run_R wrangle_data.r "${LOGFILE}" || exit 1
+run_stata wrangle_data.do "${LOGFILE}" || exit 1
+run_python wrangle_data.py "${LOGFILE}" || exit 1
 run_julia wrangle_data.jl "${LOGFILE}" || exit 1
 
 ) || false

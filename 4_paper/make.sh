@@ -48,7 +48,7 @@ cd "${MAKE_SCRIPT_DIR}/source"
 
 #run_shell my_shell_script.sh "${LOGFILE}" || exit 1
 run_latex my_project.tex "${LOGFILE}" || exit 1
-run_lyx my_project.lyx "${LOGFILE}" || exit 1
+#run_lyx my_project.lyx "${LOGFILE}" || exit 1
 ) || false
 
 echo -e "\nmake.sh finished at $(date '+%Y-%m-%d %H:%M:%S')" | tee -a "${LOGFILE}"
