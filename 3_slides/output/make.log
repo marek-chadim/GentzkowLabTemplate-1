@@ -1,10 +1,6 @@
 
-Script my_shell_script.sh in bash started at 2025-07-24 08:54:08
-Script my_shell_script.sh finished successfully at 2025-07-24 08:54:08
-Output: Hello world!
-
-Script my_project_slides.tex in latexmk -pdf -bibtex started at 2025-07-24 08:54:08
-Script my_project_slides.tex finished successfully at 2025-07-24 08:54:10
+Script my_project_slides.tex in latexmk -pdf -bibtex started at 2025-07-24 11:16:04
+Script my_project_slides.tex finished successfully at 2025-07-24 11:16:06
 Output: Rc files read:
   NONE
 Latexmk: This is Latexmk, John Collins, 27 Dec. 2024. Version 4.86a.
@@ -617,22 +613,4 @@ Latexmk: All targets (my_project_slides.pdf) are up-to-date
 The following files were created in my_project_slides.tex:
 my_project_slides.pdf 
 
-Script my_project_slides.lyx in lyx -e pdf started at 2025-07-24 08:54:10
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./my_project_slides.tex
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-01-18>
-
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./my_project_slides.tex
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-01-18>
-
-Script my_project_slides.lyx finished successfully at 2025-07-24 08:54:12
-Output: 
-
-make.sh finished at 2025-07-24 08:54:12
+make.sh finished at 2025-07-24 11:16:06

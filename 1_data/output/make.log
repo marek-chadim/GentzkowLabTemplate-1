@@ -1,23 +1,6 @@
 
-Script my_shell_script.sh in bash started at 2025-07-24 10:54:16
-Script my_shell_script.sh finished successfully at 2025-07-24 10:54:16
-Output: Hello world!
-
-Script wrangle_data.r in Rscript started at 2025-07-24 10:54:16
-Script wrangle_data.r finished successfully at 2025-07-24 10:54:16
-Output: ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.1.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-
-Script wrangle_data.do in StataMP started at 2025-07-24 10:54:16
-Script wrangle_data.do finished successfully at 2025-07-24 10:54:16
+Script wrangle_data.do in stata-mp started at 2025-07-24 11:16:02
+Script wrangle_data.do finished successfully at 2025-07-24 11:16:02
 Output:
 
   ___  ____  ____  ____  ____ ®
@@ -40,14 +23,16 @@ Notes:
       1. Stata is running in batch mode.
       2. Unicode is supported; see help unicode_advice.
       3. More than 2 billion observations are allowed; see help obs_advice.
-      4. Maximum number of variables is set to 5,000 but can be increased; see
-          help set_maxvar.
+      4. Maximum number of variables is set to 5,000 but can be increased;
+          see help set_maxvar.
 
 . do wrangle_data.do 
 
-. * =============================================================================
+. * ===========================================================================
+> ==
 . * Short description of script's purpose
-. * =============================================================================
+. * ===========================================================================
+> ==
 . 
 . clear all
 
@@ -88,18 +73,4 @@ file ../output/mpg.dta saved
 . 
 end of do-file
 
-Script wrangle_data.py in python3 started at 2025-07-24 10:54:16
-Script wrangle_data.py finished successfully at 2025-07-24 10:54:17
-Output: 
-
-The following files were created in wrangle_data.py:
-mpg.csv 
-
-Script wrangle_data.jl in julia started at 2025-07-24 10:54:17
-Script wrangle_data.jl finished successfully at 2025-07-24 10:54:19
-Output: 
-
-The following files were created in wrangle_data.jl:
-mpg.csv 
-
-make.sh finished at 2025-07-24 10:54:19
+make.sh finished at 2025-07-24 11:16:02

@@ -28,6 +28,7 @@ source "${REPO_ROOT}/lib/shell/run_R.sh"
 source "${REPO_ROOT}/lib/shell/run_stata.sh"
 source "${REPO_ROOT}/lib/shell/run_python.sh"
 source "${REPO_ROOT}/lib/shell/run_julia.sh"
+source "${REPO_ROOT}/lib/shell/run_matlab.sh"
 
 
 # Clear output directory
@@ -50,9 +51,11 @@ mkdir -p "${MAKE_SCRIPT_DIR}/output"
 cd "${MAKE_SCRIPT_DIR}/source"
 
 #run_shell my_shell_script.sh "${LOGFILE}" || exit 1
-run_R analyze_data.r "${LOGFILE}" || exit 1
+#run_R analyze_data.r "${LOGFILE}" || exit 1
 run_stata analyze_data.do "${LOGFILE}" || exit 1
-run_python analyze_data.py "${LOGFILE}" || exit 1
+#run_python analyze_data.py "${LOGFILE}" || exit 1
+#run_julia analyze_data.jl "${LOGFILE}" || exit 1
+#run_matlab analyze_data.m "${LOGFILE}" || exit 1
 
 ) || false
 

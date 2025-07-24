@@ -47,9 +47,9 @@ mkdir -p "${MAKE_SCRIPT_DIR}/output"
 (
 cd "${MAKE_SCRIPT_DIR}/source"
 
-run_shell my_shell_script.sh "${LOGFILE}" || exit 1
+#run_shell my_shell_script.sh "${LOGFILE}" || exit 1
 run_latex my_project_slides.tex "${LOGFILE}" || exit 1
-run_lyx my_project_slides.lyx "${LOGFILE}" || exit 1
+#run_lyx my_project_slides.lyx "${LOGFILE}" || exit 1
 #run_pptx my_project_slides.pptx "${LOGFILE}" || exit 1
 ) || false
 
